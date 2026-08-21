@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f7f2" />
+    <meta name="description" content="动得对：移动端优先的健身动作库，用动图和中文拆解帮助你把动作练对。" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="icon.svg" />
+    <title>动得对｜健身动作库</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#library" aria-label="返回动作库">
+        <span class="brand-mark">动</span><span>动得对</span>
+      </a>
+      <nav class="top-nav" aria-label="主导航">
+        <a class="active" href="#library">动作库</a>
+        <a href="#favorites">我的收藏 <span id="favoriteCount" class="nav-count">0</span></a>
+        <a href="#about">关于</a>
+      </nav>
+      <button class="install-button" id="installButton" hidden aria-label="安装动得对" title="安装到设备">↓ 安装</button>
+      <button class="icon-button" id="aboutButton" aria-label="打开关于页面" title="关于">ⓘ</button>
+    </header>
+
+    <main>
+      <section id="library" class="view active-view">
+        <div class="hero">
+          <div>
+            <p class="eyebrow">动作库 · V1</p>
+            <h1>把每个动作，<em>练对</em>。</h1>
+            <p class="hero-copy">用清晰的动作演示和分步拆解，找到适合今天的训练。</p>
+          </div>
+          <div class="hero-stat"><strong id="totalCount">—</strong><span>精选动作</span></div>
+        </div>
+
+        <div class="toolbar">
+          <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="搜索动作，例如：俯卧撑" /></label>
+          <button class="filter-toggle" id="filterToggle" aria-expanded="false">筛选 <span>⌄</span></button>
+        </div>
+        <div class="filters" id="filters" hidden>
+          <div class="filter-group"><span>部位</span><div id="partFilters" class="chips"></div></div>
+          <div class="filter-group"><span>器械</span><div id="equipmentFilters" class="chips"></div></div>
+          <label class="switch-row"><input type="checkbox" id="bodyweightOnly" /><span class="switch"></span>仅看自重动作</label>
+        </div>
+        <div class="section-heading"><div><p class="eyebrow">精选动作</p><h2 id="resultTitle">全部动作</h2></div><span id="resultCount" class="result-count"></span></div>
+        <div id="exerciseGrid" class="exercise-grid" aria-live="polite"></div>
+        <div id="emptyState" class="empty-state" hidden><span>◌</span><h3>没有找到匹配动作</h3><p>试试更换关键词或清除筛选条件。</p><button id="clearFilters">清除筛选</button></div>
+      </section>
+
+      <section id="detail" class="view" hidden></section>
+      <section id="favorites" class="view" hidden>
+        <div class="page-heading"><p class="eyebrow">收藏夹</p><h1>我的动作</h1><p>把常练的动作放在这里，随时回来查看。</p></div>
+        <div id="favoriteGrid" class="exercise-grid"></div>
+        <div id="favoriteEmpty" class="empty-state"><span>♡</span><h3>还没有收藏动作</h3><p>在动作卡片或详情页点一下心形，就能收藏。</p><a href="#library">去逛逛动作库</a></div>
+      </section>
+      <section id="about" class="view" hidden>
+        <div class="page-heading"><p class="eyebrow">关于动得对</p><h1>专注动作本身。</h1><p>这是一个轻量、去商业化的健身动作工具，帮助你看懂动作，再开始训练。</p></div>
+        <div class="about-grid"><article><span class="about-icon">↗</span><h3>数据来源</h3><p>动作元数据来自 hasaneyldrm/exercises-dataset；人工增强层按 ACSM、NSCA 和举重技术文献逐条校正。</p></article><article><span class="about-icon">◎</span><h3>使用说明</h3><p>V1 提供精选动作浏览、搜索、筛选、详情拆解和本地收藏。详情页会区分主要训练目标、参与肌群和待复核资料。</p></article><article><span class="about-icon">!</span><h3>健康提示</h3><p>动作内容仅供一般信息参考。训练前请根据自身情况咨询专业医生或教练；出现疼痛、麻木或眩晕请停止。</p></article></div>
+        <div class="copyright"><strong>素材版权</strong><p>GIF/图片素材归 Gym visual 所有，仅按 180×180 原始尺寸展示。</p><p class="attribution">© Gym visual — https://gymvisual.com/</p><p>代码与动作元数据遵循 MIT License。商业发布前请单独核实素材授权。</p></div>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status"></div>
+    <script src="app.js?v=6"></script>
+    <script>
+      if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js?v=5", { updateViaCache: "none" }).then(reg => reg.update()).catch(() => {});
+    </script>
+  </body>
+</html>

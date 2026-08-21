@@ -1,0 +1,14 @@
+{
+  "name": "动得对｜健身动作库",
+  "short_name": "动得对",
+  "description": "用动图和中文分步拆解，把每个动作练对。",
+  "lang": "zh-CN",
+  "start_url": "./index.html#library",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f7f2",
+  "theme_color": "#17221d",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

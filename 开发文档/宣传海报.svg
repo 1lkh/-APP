@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1440" viewBox="0 0 1080 1440">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111816"/>
+      <stop offset="0.58" stop-color="#1b2924"/>
+      <stop offset="1" stop-color="#0d1110"/>
+    </linearGradient>
+    <linearGradient id="lime" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d9ff58"/>
+      <stop offset="1" stop-color="#8bdc36"/>
+    </linearGradient>
+    <linearGradient id="orange" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff8a4c"/>
+      <stop offset="1" stop-color="#ef4f39"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse">
+      <path d="M42 0H0V42" fill="none" stroke="#d9ff58" stroke-width="1" opacity=".07"/>
+    </pattern>
+  </defs>
+
+  <rect width="1080" height="1440" fill="#090d0c"/>
+  <rect x="28" y="28" width="1024" height="1384" rx="32" fill="url(#bg)" stroke="#31473e" stroke-width="2"/>
+  <rect x="28" y="28" width="1024" height="1384" rx="32" fill="url(#grid)"/>
+  <circle cx="900" cy="178" r="160" fill="#b7ee48" opacity=".13" filter="url(#glow)"/>
+  <circle cx="174" cy="1180" r="220" fill="#f15a3e" opacity=".15" filter="url(#glow)"/>
+
+  <g transform="translate(78 86)">
+    <rect width="64" height="64" rx="18" fill="url(#lime)"/>
+    <path d="M17 43V21h10v14h10V16h10v27H17Z" fill="#102019"/>
+    <text x="84" y="27" fill="#d9ff58" font-family="Arial, sans-serif" font-size="18" font-weight="800" letter-spacing="4">FIT / 01</text>
+    <text x="84" y="56" fill="#f3f7ef" font-family="Arial, sans-serif" font-size="28" font-weight="800" letter-spacing="2">动得对</text>
+  </g>
+
+  <g transform="translate(78 214)">
+    <text fill="#a8b8ae" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="5">YOUR DAILY TRAINING GUIDE</text>
+    <text y="104" fill="#f4f8f2" font-family="Arial, sans-serif" font-size="76" font-weight="900">每一次训练</text>
+    <text y="194" fill="url(#lime)" font-family="Arial, sans-serif" font-size="96" font-weight="900">都练得更好。</text>
+    <text y="250" fill="#c0cec4" font-family="Arial, sans-serif" font-size="25">动作示范 · 发力提示 · 训练计划 · 进步记录</text>
+  </g>
+
+  <g transform="translate(760 198)" fill="none" stroke="#d9ff58" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="86" cy="22" r="24" stroke-width="8"/>
+    <path d="M73 48c-26 27-29 66-13 96l26 48m-12-80 62-17 47 39m-97 28 43 53 30 55m-64-148-56 32-35 56m106-30-31 72 42 40" stroke-width="10"/>
+    <path d="M-24 18h52m-52 0v36m52-36v36M194 107h52m-52 0v36m52-36v36" stroke-width="7"/>
+    <path d="M0 18h194" stroke-width="5" opacity=".55"/>
+  </g>
+  <text x="745" y="454" fill="#93a79b" font-family="Arial, sans-serif" font-size="17" letter-spacing="3">MOVE WITH INTENT</text>
+
+  <g transform="translate(78 524)">
+    <rect width="924" height="116" rx="20" fill="#22332c" stroke="#3b5346"/>
+    <g transform="translate(30 24)">
+      <text fill="#d9ff58" font-family="Arial, sans-serif" font-size="34" font-weight="900">100+</text>
+      <text y="42" fill="#aebfb3" font-family="Arial, sans-serif" font-size="18">精选动作</text>
+    </g>
+    <path d="M220 25v66" stroke="#446054"/>
+    <g transform="translate(260 24)">
+      <text fill="#ff8650" font-family="Arial, sans-serif" font-size="34" font-weight="900">3D</text>
+      <text y="42" fill="#aebfb3" font-family="Arial, sans-serif" font-size="18">动作拆解</text>
+    </g>
+    <path d="M460 25v66" stroke="#446054"/>
+    <g transform="translate(500 24)">
+      <text fill="#6ee5e5" font-family="Arial, sans-serif" font-size="34" font-weight="900">7×24</text>
+      <text y="42" fill="#aebfb3" font-family="Arial, sans-serif" font-size="18">随时可用</text>
+    </g>
+    <path d="M706 25v66" stroke="#446054"/>
+    <g transform="translate(746 24)">
+      <text fill="#f4f8f2" font-family="Arial, sans-serif" font-size="34" font-weight="900">0</text>
+      <text y="42" fill="#aebfb3" font-family="Arial, sans-serif" font-size="18">复杂门槛</text>
+    </g>
+  </g>
+
+  <g transform="translate(78 702)">
+    <rect width="548" height="470" rx="28" fill="#15231e" stroke="#3b5346" stroke-width="2"/>
+    <text x="32" y="48" fill="#f3f7ef" font-family="Arial, sans-serif" font-size="24" font-weight="800">打开就能练</text>
+    <text x="32" y="78" fill="#92a79a" font-family="Arial, sans-serif" font-size="17">用更简单的方法，找到正确动作</text>
+    <rect x="32" y="108" width="484" height="54" rx="14" fill="#263b31"/>
+    <circle cx="58" cy="135" r="11" fill="none" stroke="#9fb2a5" stroke-width="3"/>
+    <path d="M66 143l10 10" stroke="#9fb2a5" stroke-width="3"/>
+    <text x="92" y="142" fill="#9fb2a5" font-family="Arial, sans-serif" font-size="18">搜索：深蹲、卧推、硬拉…</text>
+    <g transform="translate(32 188)">
+      <rect width="228" height="118" rx="18" fill="#d9ff58"/>
+      <text x="20" y="35" fill="#142019" font-family="Arial, sans-serif" font-size="18" font-weight="800">今日推荐</text>
+      <text x="20" y="72" fill="#142019" font-family="Arial, sans-serif" font-size="27" font-weight="900">深蹲</text>
+      <text x="20" y="98" fill="#34512c" font-family="Arial, sans-serif" font-size="15">腿部 · 臀部 · 核心</text>
+      <path d="M180 82c15-20 20-42 9-62" fill="none" stroke="#34512c" stroke-width="4" opacity=".65"/>
+    </g>
+    <g transform="translate(276 188)">
+      <rect width="240" height="118" rx="18" fill="#293d35"/>
+      <text x="20" y="35" fill="#a8b8ae" font-family="Arial, sans-serif" font-size="18" font-weight="800">动作提示</text>
+      <text x="20" y="70" fill="#f3f7ef" font-family="Arial, sans-serif" font-size="20" font-weight="800">膝盖对齐脚尖</text>
+      <text x="20" y="98" fill="#6ee5e5" font-family="Arial, sans-serif" font-size="15">呼吸：下吸上呼</text>
+    </g>
+    <g transform="translate(32 334)">
+      <rect width="484" height="94" rx="18" fill="#1d3028"/>
+      <text x="20" y="34" fill="#d9ff58" font-family="Arial, sans-serif" font-size="17" font-weight="800">训练记录</text>
+      <text x="20" y="68" fill="#f3f7ef" font-family="Arial, sans-serif" font-size="22" font-weight="800">本周完成 4 / 5 次</text>
+      <path d="M286 66h166" stroke="#395448" stroke-width="10" stroke-linecap="round"/>
+      <path d="M286 66h132" stroke="url(#lime)" stroke-width="10" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <g transform="translate(656 702)">
+    <rect width="346" height="470" rx="28" fill="#f15b3f"/>
+    <text x="30" y="48" fill="#fff9f3" font-family="Arial, sans-serif" font-size="20" font-weight="800" letter-spacing="3">START HERE</text>
+    <text x="30" y="112" fill="#fff9f3" font-family="Arial, sans-serif" font-size="46" font-weight="900">想练什么？</text>
+    <text x="30" y="154" fill="#ffe3d8" font-family="Arial, sans-serif" font-size="21">输入动作名称，马上开始</text>
+    <g transform="translate(30 192)" fill="#fff9f3">
+      <rect width="286" height="48" rx="12" fill="#ff8060"/>
+      <text x="20" y="31" font-family="Arial, sans-serif" font-size="18" font-weight="700">胸 · 背 · 腿 · 肩 · 核心</text>
+    </g>
+    <path d="M30 284h286" stroke="#ffb19a" stroke-width="2" opacity=".7"/>
+    <text x="30" y="328" fill="#fff9f3" font-family="Arial, sans-serif" font-size="19" font-weight="700">训练不靠猜</text>
+    <text x="30" y="360" fill="#ffe3d8" font-family="Arial, sans-serif" font-size="18">看得懂、学得会、坚持得下去。</text>
+    <g transform="translate(30 402)">
+      <circle cx="20" cy="0" r="15" fill="#d9ff58"/>
+      <path d="M14 0l5 5 9-11" fill="none" stroke="#142019" stroke-width="4"/>
+      <text x="48" y="7" fill="#fff9f3" font-family="Arial, sans-serif" font-size="17" font-weight="700">手机 / 电脑都能打开</text>
+    </g>
+  </g>
+
+  <g transform="translate(78 1240)">
+    <text fill="#a8b8ae" font-family="Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="2">打开浏览器，输入这个网址</text>
+    <rect y="28" width="924" height="92" rx="18" fill="#d9ff58"/>
+    <text x="34" y="91" fill="#112019" font-family="Arial, sans-serif" font-size="58" font-weight="900" letter-spacing="1">dgdlkj.top</text>
+    <text x="888" y="84" text-anchor="end" fill="#2f4b34" font-family="Arial, sans-serif" font-size="17" font-weight="800">免费进入 · 立即开始</text>
+  </g>
+  <text x="78" y="1388" fill="#718278" font-family="Arial, sans-serif" font-size="16" letter-spacing="2">动得对 FITNESS APP  ·  让每个动作都有答案</text>
+</svg>

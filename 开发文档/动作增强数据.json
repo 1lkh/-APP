@@ -1,0 +1,263 @@
+{
+  "schema_version": "1.0",
+  "review_policy": {
+    "primary_goal": "动作的主要适应性目标，不等同于所有参与发力的肌群",
+    "evidence_level": "A=指南/系统综述或运动项目技术文献；B=同行评议实验研究；C=教练技术资料或待复核",
+    "scope_note": "本文件是人工增强层，和开源动作元数据分离。未列出的动作必须显示待复核状态，不得把数据集单一 target 字段包装成完整运动处方。"
+  },
+  "references": [
+    {
+      "id": "acsm-2009",
+      "citation": "American College of Sports Medicine. Progression Models in Resistance Training for Healthy Adults. Medicine & Science in Sports & Exercise. 2009;41(3):687-708.",
+      "doi": "10.1249/MSS.0b013e3181915670"
+    },
+    {
+      "id": "haff-2012",
+      "citation": "Haff GG, Nimphius S. Training Principles for Power. Strength and Conditioning Journal. 2012;34(6):2-12.",
+      "doi": "10.1519/SSC.0b013e31826db467"
+    },
+    {
+      "id": "suchomel-2015",
+      "citation": "Suchomel TJ, Comfort P, Stone MH. Weightlifting Pulling Derivatives: Rationale for Implementation and Application. Sports Medicine. 2015;45:823-839.",
+      "doi": "10.1007/s40279-015-0324-5"
+    },
+    {
+      "id": "suchomel-2018",
+      "citation": "Suchomel TJ, Nimphius S, Stone MH. The Importance of Muscular Strength in Athletic Performance. Sports Medicine. 2016;46:1419-1449.",
+      "doi": "10.1007/s40279-016-0486-0"
+    },
+    {
+      "id": "schoenfeld-2010",
+      "citation": "Schoenfeld BJ. The Mechanisms of Muscle Hypertrophy and Their Application to Resistance Training. Journal of Strength and Conditioning Research. 2010;24(10):2857-2872.",
+      "doi": "10.1519/JSC.0b013e3181e840f3"
+    },
+    {
+      "id": "nsca-essentials",
+      "citation": "Haff GG, Triplett NT, editors. Essentials of Strength Training and Conditioning. 4th ed. NSCA; 2016.",
+      "note": "运动技术、力量训练和功率训练的基础教材；发布前仍需由持证教练复核个体化提示。"
+    },
+    {
+      "id": "iwf",
+      "citation": "International Weightlifting Federation. Technical and Competition Rules & Regulations.",
+      "url": "https://iwf.sport/"
+    }
+  ],
+  "exercises": {
+    "power clean": {
+      "primary_goal": "爆发力与功率输出",
+      "movement_pattern": "髋主导拉起 + 快速三伸展 + 前架接杠",
+      "primary_muscles": ["臀大肌", "股四头肌", "腘绳肌", "斜方肌"],
+      "secondary_muscles": ["竖脊肌", "前臂与握力", "核心稳定肌群", "三角肌"],
+      "not_the_goal": "不能把高翻当成孤立的股四头肌或腘绳肌训练；腘绳肌参与髋伸和回摆制动，股四头肌参与第二拉和接杠，但动作的主要训练价值是全身快速产生力量（功率）。",
+      "steps": [
+        "起始：杠铃贴近胫骨，脚中部受力；髋高于膝、背部中立，肩略在杠前，握距使前臂基本垂直。",
+        "第一拉：腿部推地，杠铃沿胫骨上移；保持杠贴身，髋肩同步上升，不要急着用手臂弯举。",
+        "过膝与第二拉：杠过膝后重新收髋，进入髋、膝、踝快速伸展；肩膀耸起，杠沿身体垂直上行。",
+        "接杠：脚掌快速换位，肘部绕到杠下形成稳定前架；用屈膝髋缓冲，不要用手腕硬顶。",
+        "结束：站稳后再放杠；训练功率时每次都要保持速度，速度明显下降就结束该组。"
+      ],
+      "cues": ["杠贴身", "推地，不要拉离身体", "髋膝踝一起加速", "肘快、接稳"],
+      "common_errors": ["杠铃绕膝向前，造成前倾", "过早弯臂，削弱腿髋发力", "用跳起代替主动拉高和快速接杠", "接杠时肘低、腕部被压", "疲劳后仍追求重量，速度和姿势同时崩坏"],
+      "breathing": "起始前吸气并建立躯干压力；拉起和接杠期间短暂屏息，站稳后呼气。",
+      "programming": "技术/功率：3–5 组 × 1–3 次，组间休息 2–3 分钟；必须先掌握空杠和高翻分解。",
+      "difficulty": "高级",
+      "safety": "需要教练现场纠正或充分学习分解动作；肩、腕、腰或膝出现疼痛时停止。",
+      "evidence_level": "A",
+      "sources": ["suchomel-2015", "haff-2012", "nsca-essentials", "iwf"],
+      "review_status": "已人工复核：重点修正为爆发力/功率，而非单一股四头肌"
+    },
+    "barbell clean and press": {
+      "primary_goal": "全身功率、力量耐力与负重协调",
+      "movement_pattern": "高翻接杠 + 前架推举",
+      "primary_muscles": ["臀大肌", "股四头肌", "腘绳肌", "三角肌", "肱三头肌"],
+      "secondary_muscles": ["斜方肌", "核心", "竖脊肌", "握力"],
+      "not_the_goal": "不是单纯肩部或股四头肌孤立训练；前半段是爆发性拉起，后半段是垂直推举。",
+      "steps": [
+        "从地面或悬垂位开始，先完成高翻：杠贴身、腿髋快速伸展。",
+        "前架接杠后，肘部略抬、腕部保持可承受角度，脚掌稳定。",
+        "先收紧腹压和臀部，再将杠沿垂直路径推过头顶；头部在杠过额头后回到中立。",
+        "锁定时肋骨不外翻、腰部不过度后仰；控制杠回前架，再按计划放下。"
+      ],
+      "cues": ["先接稳，再推举", "杠走直线", "肋骨收住", "落地有控制"],
+      "common_errors": ["高翻还未稳定就开始推举", "推举时腰椎过伸", "杠铃绕开脸部形成大弧线", "疲劳状态下继续做高速接杠"],
+      "breathing": "高翻前建立腹压；前架稳定后重新吸气，推举通过困难点时保持躯干张力。",
+      "programming": "力量耐力/综合训练：3–5 组 × 3–6 次，组间 2–3 分钟；不以力竭为目标。",
+      "difficulty": "高级",
+      "safety": "必须分别掌握高翻和过头推举；肩、腕、腰痛者先做替代动作。",
+      "evidence_level": "A",
+      "sources": ["suchomel-2015", "haff-2012", "nsca-essentials"],
+      "review_status": "已人工复核"
+    },
+    "barbell full squat": {
+      "primary_goal": "下肢力量与肌肉量",
+      "movement_pattern": "双侧膝髋主导深蹲",
+      "primary_muscles": ["股四头肌", "臀大肌", "大收肌"],
+      "secondary_muscles": ["腘绳肌", "小腿", "竖脊肌", "核心"],
+      "steps": [
+        "杠铃放在稳定位置，脚距约髋至肩宽，脚尖按髋结构自然外旋。",
+        "吸气建立腹压，屈髋屈膝同时下蹲；膝盖沿脚尖方向移动，脚掌三点保持接地。",
+        "下蹲到个人可控的深度：骨盆、腰椎和脚跟不失控，不为追求深度强行塌腰。",
+        "用脚中部推地，膝髋同步伸展站起；杠保持在脚中部上方。"
+      ],
+      "cues": ["脚掌三点接地", "膝盖跟脚尖走", "腹压保持到过难点", "站起时髋膝同步"],
+      "common_errors": ["脚跟离地", "膝盖内扣", "深度超过可控制范围导致骨盆卷曲", "起身时髋先抬、腰部代偿"],
+      "breathing": "下蹲前吸气建立腹压，过粘滞点后呼气；大重量不建议持续快速换气。",
+      "programming": "力量：3–5 组 × 3–8 次；增肌：3–4 组 × 6–12 次，具体负重按技术和恢复调整。",
+      "difficulty": "中高级",
+      "safety": "深度和站距需要匹配个体活动度；膝腰持续疼痛需停止并寻求专业评估。",
+      "evidence_level": "A",
+      "sources": ["acsm-2009", "schoenfeld-2010", "nsca-essentials"],
+      "review_status": "已人工复核"
+    },
+    "barbell deadlift": {
+      "primary_goal": "髋伸力量与后侧链力量",
+      "movement_pattern": "髋主导铰链 + 地面拉起",
+      "primary_muscles": ["臀大肌", "腘绳肌", "大收肌", "竖脊肌"],
+      "secondary_muscles": ["斜方肌", "背阔肌等长稳定", "前臂与握力", "核心"],
+      "steps": [
+        "脚中部置于杠下，髋向后坐并屈膝；双手在膝外侧，肩略在杠前。",
+        "拉起前收紧腋窝、背阔肌和腹压，让杠、肩胛与髋形成稳定连接。",
+        "推地并伸髋，杠沿腿部直线上升；不要先抬髋或用腰部猛拉。",
+        "站直时臀部收紧但不后仰；回放先屈髋，再让杠经过膝盖后屈膝落地。"
+      ],
+      "cues": ["杠贴腿", "推地", "腋窝夹紧", "站直不后仰"],
+      "common_errors": ["起拉时背部失去中立", "杠离开身体", "髋先抬导致腰部接管", "锁定时过度后仰", "回放时直接弯腰砸杠"],
+      "breathing": "每次重复前吸气、建立腹压并保持到锁定；放下或重新准备时呼气。",
+      "programming": "力量：3–5 组 × 2–6 次；新手优先做轻重量技术组，不追求力竭。",
+      "difficulty": "中高级",
+      "safety": "腰部疼痛、麻木或放射痛不是正常训练感觉；必要时改用哑铃/陷阱杠并咨询专业人士。",
+      "evidence_level": "A",
+      "sources": ["acsm-2009", "nsca-essentials"],
+      "review_status": "已人工复核"
+    },
+    "barbell romanian deadlift": {
+      "primary_goal": "腘绳肌和臀大肌的髋伸力量与离心控制",
+      "movement_pattern": "髋铰链",
+      "primary_muscles": ["腘绳肌", "臀大肌"],
+      "secondary_muscles": ["大收肌", "竖脊肌", "背阔肌等长稳定", "握力"],
+      "steps": [
+        "站立握杠，膝盖保持轻微屈曲；先收紧腹部和腋窝。",
+        "髋向后推，杠贴近大腿下滑；小腿尽量保持接近垂直。",
+        "下到腘绳肌明显拉伸但腰背仍中立的位置，不用追求杠触地。",
+        "收缩臀部向前伸髋回到站立，避免用腰椎后仰完成动作。"
+      ],
+      "cues": ["屁股向后", "杠贴腿", "感受后侧链拉伸", "臀部带回"],
+      "common_errors": ["把动作做成深蹲", "杠离腿太远", "为了更低而塌腰", "站起时腰椎过伸"],
+      "breathing": "下放前吸气建立腹压，回到站立并通过难点后呼气。",
+      "programming": "增肌/控制：3–4 组 × 6–12 次；下放 2–3 秒，保留 1–3 次余力。",
+      "difficulty": "中级",
+      "safety": "后侧链柔韧性不足时缩短幅度或改用哑铃；腰痛时停止。",
+      "evidence_level": "A",
+      "sources": ["acsm-2009", "schoenfeld-2010", "nsca-essentials"],
+      "review_status": "已人工复核"
+    },
+    "kettlebell swing": {
+      "primary_goal": "髋部爆发力与功率",
+      "movement_pattern": "髋铰链的弹射式伸髋",
+      "primary_muscles": ["臀大肌", "腘绳肌"],
+      "secondary_muscles": ["竖脊肌", "核心", "背阔肌", "握力"],
+      "not_the_goal": "不是用肩膀前平举壶铃；手臂只连接负重，主要动力来自髋部。",
+      "steps": [
+        "壶铃放在身前，髋后坐抓握；通过腿间向后摆，保持脊柱中立。",
+        "脚掌推地并快速伸髋，利用惯性让壶铃上浮到胸前高度。",
+        "顶部收紧臀部和腹部，肋骨不外翻；不要耸肩或用手臂抬高。",
+        "壶铃回落时髋后坐吸收力量，连续重复或稳稳放回地面。"
+      ],
+      "cues": ["像关门一样收髋", "臀部弹射", "手臂像绳子", "顶部站直"],
+      "common_errors": ["深蹲式屈膝", "用肩抬铃", "顶部后仰", "壶铃回摆时腰部塌陷", "动作节奏失控"],
+      "breathing": "回摆吸气，伸髋和顶部收紧时快速呼气；保持节奏而不是憋气硬甩。",
+      "programming": "功率/体能：5–10 组 × 10–20 次或按时间间歇；一旦髋铰链和脊柱控制下降立即停止。",
+      "difficulty": "中级",
+      "safety": "先掌握无负重髋铰链；腰部疼痛、手掌磨损或肩部不适时换动作。",
+      "evidence_level": "B",
+      "sources": ["haff-2012", "nsca-essentials"],
+      "review_status": "已人工复核"
+    },
+    "barbell front squat": {
+      "primary_goal": "下肢力量，强调膝主导蹲和躯干直立",
+      "movement_pattern": "前架双侧深蹲",
+      "primary_muscles": ["股四头肌", "臀大肌", "大收肌"],
+      "secondary_muscles": ["核心", "上背", "小腿"],
+      "steps": [
+        "杠放在前肩架上，肘部抬高、胸骨保持向前；手指只需协助稳定。",
+        "吸气建立腹压，膝盖和髋同时弯曲；保持杠在脚中部上方。",
+        "在不塌腰、不掉肘的范围下蹲；前蹲通常要求更强的踝背屈和躯干控制。",
+        "脚中部推地站起，肘部继续抬高，避免杠滚落。"
+      ],
+      "cues": ["肘高胸起", "杠在脚中部", "膝盖顺脚尖", "站起不掉肘"],
+      "common_errors": ["肘部下坠导致杠滚落", "为了保持胸起而腰椎过伸", "膝盖内扣", "踝活动受限却强行下蹲"],
+      "breathing": "每次下蹲前吸气建立腹压，站过难点后呼气。",
+      "programming": "力量/技术：3–5 组 × 3–8 次；以躯干和肘位不变为优先。",
+      "difficulty": "中高级",
+      "safety": "腕、肩或踝活动度不足时先使用交叉握或举重带辅助，并减轻负重。",
+      "evidence_level": "A",
+      "sources": ["acsm-2009", "nsca-essentials"],
+      "review_status": "已人工复核"
+    },
+    "barbell thruster": {
+      "primary_goal": "下肢驱动到过头推举的全身功率与体能",
+      "movement_pattern": "前蹲 + 推举（腿部驱动）",
+      "primary_muscles": ["股四头肌", "臀大肌", "三角肌", "肱三头肌"],
+      "secondary_muscles": ["核心", "上背", "小腿"],
+      "not_the_goal": "不是只练肩或只练腿；它是连续的全身复合动作，体能代价高。",
+      "steps": [
+        "前架站稳，完成可控前蹲；下蹲时保持肘部抬起。",
+        "从蹲底快速伸膝伸髋，把腿部力量传给杠铃。",
+        "在腿部驱动末端接上手臂推举，杠沿直线过头。",
+        "锁定时腹部收紧、肋骨不外翻；控制回到前架再进入下一次。"
+      ],
+      "cues": ["腿先发力", "一口气完成", "杠走直线", "肋骨收住"],
+      "common_errors": ["腿部未伸直就靠肩硬推", "蹲底反弹失控", "过头时腰部过伸", "呼吸紊乱导致动作节奏崩坏"],
+      "breathing": "下蹲前吸气，腿部驱动和推举通过难点时呼气；高次数时保持节奏呼吸。",
+      "programming": "体能：3–5 组 × 5–10 次；重量以全程速度和姿势为准，避免力竭。",
+      "difficulty": "中高级",
+      "safety": "肩、腕、腰或膝有症状时先使用哑铃或分解训练；不要用疲劳状态练大重量。",
+      "evidence_level": "A",
+      "sources": ["acsm-2009", "haff-2012", "nsca-essentials"],
+      "review_status": "已人工复核"
+    },
+    "farmers walk": {
+      "primary_goal": "握力、躯干抗侧屈稳定与负重行走能力",
+      "movement_pattern": "双侧负重携行",
+      "primary_muscles": ["前臂与握力", "斜方肌", "核心抗侧屈肌群"],
+      "secondary_muscles": ["臀大肌", "股四头肌", "小腿"],
+      "not_the_goal": "不应把农夫行走标成‘主要练股四头肌’；腿部是行走参与者，核心和握力才是最直接的训练目标。",
+      "steps": [
+        "双手拿起负重，先完成一次髋铰链和站立，肩胛保持自然下沉。",
+        "目视前方，肋骨叠在骨盆上，步幅短而稳定；不要左右摆动。",
+        "按距离或时间行走，保持握力和躯干姿势；无法维持就放下。",
+        "放下时先髋后坐、屈膝，保持负重贴近身体。"
+      ],
+      "cues": ["走稳，不摇", "肋骨对齐骨盆", "肩胛稳定", "握不住就停"],
+      "common_errors": ["耸肩", "身体侧倾", "跨大步导致负重摆动", "为了距离硬撑到握力完全失效"],
+      "breathing": "保持连续呼吸；短距离重负重时可在起步前建立腹压，行走中不要长时间憋气。",
+      "programming": "力量/携行：3–5 轮 × 20–40 米或 20–40 秒，轮间休息 60–120 秒。",
+      "difficulty": "初中级",
+      "safety": "肩、腰或握力问题者降低负重；通道必须无障碍，避免疲劳中突然转向。",
+      "evidence_level": "B",
+      "sources": ["suchomel-2018", "nsca-essentials"],
+      "review_status": "已人工复核"
+    },
+    "barbell one arm snatch": {
+      "primary_goal": "单侧爆发力、功率和协调性",
+      "movement_pattern": "单臂高翻式拉起 + 过头接杠",
+      "primary_muscles": ["臀大肌", "股四头肌", "腘绳肌", "斜方肌", "三角肌"],
+      "secondary_muscles": ["核心抗旋转", "前臂与握力", "竖脊肌"],
+      "steps": [
+        "杠在脚中部，单手握在适合的中心位置；另一侧手臂用于平衡。",
+        "腿髋推动杠垂直上行，保持杠贴近身体，避免用肩单独拉。",
+        "在髋膝踝快速伸展后，身体主动下钻到杠下，肘部锁定。",
+        "站稳后再放下；从轻重量和高翻分解开始。"
+      ],
+      "cues": ["髋部加速", "杠走近身", "主动钻到杠下", "核心抗旋转"],
+      "common_errors": ["杠向外摆", "单侧负重导致躯干侧弯", "用手臂拉到高位再硬顶", "肩肘锁定不稳定"],
+      "breathing": "起拉前吸气建立躯干张力；接杠稳定后呼气。",
+      "programming": "技术/功率：每侧 3–5 组 × 1–3 次，组间 2–3 分钟。",
+      "difficulty": "高级",
+      "safety": "不适合没有举重技术基础的人自行尝试；肩、腕、腰痛时停止。",
+      "evidence_level": "A",
+      "sources": ["suchomel-2015", "haff-2012", "iwf"],
+      "review_status": "已人工复核"
+    }
+  }
+}
