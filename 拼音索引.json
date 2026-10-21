@@ -1,0 +1,910 @@
+{
+ "version": "1.0",
+ "note": "key 为 精选100动作.csv 的英文名；py 全拼、pyi 首字母、alias 口语别名",
+ "items": {
+  "incline push-up": {
+   "py": "shangxiefuwocheng",
+   "pyi": "sxfwc",
+   "alias": [
+    "xiongji",
+    "xiong",
+    "上斜俯卧撑"
+   ]
+  },
+  "barbell incline bench press": {
+   "py": "shangxieganglingwotui",
+   "pyi": "sxglwt",
+   "alias": [
+    "xiongji",
+    "xiong",
+    "上斜杠铃卧推"
+   ]
+  },
+  "decline push-up": {
+   "py": "xiaxiefuwocheng",
+   "pyi": "xxfwc",
+   "alias": [
+    "xiongji",
+    "xiong",
+    "下斜俯卧撑"
+   ]
+  },
+  "push-up": {
+   "py": "fuwocheng",
+   "pyi": "fwc",
+   "alias": [
+    "xiongji",
+    "xiong",
+    "俯卧撑"
+   ]
+  },
+  "chest dip": {
+   "py": "shuanggangbiqushen",
+   "pyi": "sgbqs",
+   "alias": [
+    "xiongji",
+    "xiong",
+    "双杠臂屈伸"
+   ]
+  },
+  "dumbbell bench press": {
+   "py": "yalingwotui",
+   "pyi": "ylwt",
+   "alias": [
+    "xiongji",
+    "xiong",
+    "哑铃卧推"
+   ]
+  },
+  "dumbbell fly": {
+   "py": "yalingfeiniao",
+   "pyi": "ylfn",
+   "alias": [
+    "xiongji",
+    "xiong",
+    "哑铃飞鸟"
+   ]
+  },
+  "wide hand push up": {
+   "py": "kuanjufuwocheng",
+   "pyi": "kjfwc",
+   "alias": [
+    "xiongji",
+    "xiong",
+    "宽距俯卧撑"
+   ]
+  },
+  "barbell bench press": {
+   "py": "ganglingwotui",
+   "pyi": "glwt",
+   "alias": [
+    "xiongji",
+    "xiong",
+    "杠铃卧推"
+   ]
+  },
+  "chest and front of shoulder stretch": {
+   "py": "jianbulashen",
+   "pyi": "jbls",
+   "alias": [
+    "xiongji",
+    "xiong",
+    "肩部拉伸"
+   ]
+  },
+  "behind head chest stretch": {
+   "py": "xiongbulashen",
+   "pyi": "xbls",
+   "alias": [
+    "xiongji",
+    "xiong",
+    "胸部拉伸"
+   ]
+  },
+  "superman push-up": {
+   "py": "chaorenfuwocheng",
+   "pyi": "crfwc",
+   "alias": [
+    "xiongji",
+    "xiong",
+    "超人俯卧撑"
+   ]
+  },
+  "kneeling push-up (male)": {
+   "py": "guizifuwocheng",
+   "pyi": "gzfwc",
+   "alias": [
+    "xiongji",
+    "xiong",
+    "跪姿俯卧撑"
+   ]
+  },
+  "upward facing dog": {
+   "py": "shangquanshi",
+   "pyi": "sqs",
+   "alias": [
+    "xiabei",
+    "shujizhu",
+    "上犬式"
+   ]
+  },
+  "barbell bent over row": {
+   "py": "fushenganglinghuachuan",
+   "pyi": "fsglhc",
+   "alias": [
+    "beibu",
+    "俯身杠铃划船"
+   ]
+  },
+  "kettlebell one arm row": {
+   "py": "danbihulinghuachuan",
+   "pyi": "dbhlhc",
+   "alias": [
+    "beibu",
+    "单臂壶铃划船"
+   ]
+  },
+  "muscle up": {
+   "py": "shuanglibi",
+   "pyi": "slb",
+   "alias": [
+    "beikuo",
+    "双力臂"
+   ]
+  },
+  "inverted row": {
+   "py": "fanxianghuachuan",
+   "pyi": "fxhc",
+   "alias": [
+    "beibu",
+    "反向划船"
+   ]
+  },
+  "chin-up": {
+   "py": "fanwoyintixiangshang",
+   "pyi": "fwytxs",
+   "alias": [
+    "beikuo",
+    "反握引体向上"
+   ]
+  },
+  "cable seated row": {
+   "py": "zuozishengsuohuachuan",
+   "pyi": "zzsshc",
+   "alias": [
+    "beibu",
+    "坐姿绳索划船"
+   ]
+  },
+  "wide grip pull-up": {
+   "py": "kuanwoyintixiangshang",
+   "pyi": "kwytxs",
+   "alias": [
+    "beikuo",
+    "宽握引体向上"
+   ]
+  },
+  "pull-up": {
+   "py": "yintixiangshang",
+   "pyi": "ytxs",
+   "alias": [
+    "beikuo",
+    "引体向上"
+   ]
+  },
+  "barbell shrug": {
+   "py": "ganglingsongjian",
+   "pyi": "glsj",
+   "alias": [
+    "xiefangji",
+    "杠铃耸肩"
+   ]
+  },
+  "hyperextension": {
+   "py": "beiqushenshanyangtingshen",
+   "pyi": "bqssyts",
+   "alias": [
+    "xiabei",
+    "shujizhu",
+    "背屈伸（山羊挺身）"
+   ]
+  },
+  "kneeling lat stretch": {
+   "py": "beikuojilashen",
+   "pyi": "bkjls",
+   "alias": [
+    "beikuo",
+    "背阔肌拉伸"
+   ]
+  },
+  "spine stretch": {
+   "py": "jizhulashen",
+   "pyi": "jzls",
+   "alias": [
+    "xiabei",
+    "shujizhu",
+    "脊柱拉伸"
+   ]
+  },
+  "cable lat pulldown full range of motion": {
+   "py": "gaoweixiala",
+   "pyi": "gwxl",
+   "alias": [
+    "beikuo",
+    "高位下拉"
+   ]
+  },
+  "dumbbell reverse fly": {
+   "py": "fushenyalingfanxiangfeiniao",
+   "pyi": "fsylfxfn",
+   "alias": [
+    "sanjiaoji",
+    "jiantou",
+    "俯身哑铃反向飞鸟"
+   ]
+  },
+  "dumbbell one arm shoulder press": {
+   "py": "danbiyalingjiantui",
+   "pyi": "dbyljt",
+   "alias": [
+    "sanjiaoji",
+    "jiantou",
+    "单臂哑铃肩推"
+   ]
+  },
+  "barbell one arm snatch": {
+   "py": "danbiganglingzhuaju",
+   "pyi": "dbglzj",
+   "alias": [
+    "sanjiaoji",
+    "jiantou",
+    "单臂杠铃抓举"
+   ]
+  },
+  "dumbbell lateral raise": {
+   "py": "yalingcepingju",
+   "pyi": "ylcpj",
+   "alias": [
+    "sanjiaoji",
+    "jiantou",
+    "哑铃侧平举"
+   ]
+  },
+  "dumbbell front raise": {
+   "py": "yalingqianpingju",
+   "pyi": "ylqpj",
+   "alias": [
+    "sanjiaoji",
+    "jiantou",
+    "哑铃前平举"
+   ]
+  },
+  "battling ropes": {
+   "py": "zhansheng",
+   "pyi": "zs",
+   "alias": [
+    "sanjiaoji",
+    "jiantou",
+    "战绳"
+   ]
+  },
+  "barbell thruster": {
+   "py": "tingjushendun",
+   "pyi": "tjsd",
+   "alias": [
+    "sanjiaoji",
+    "jiantou",
+    "挺举深蹲"
+   ]
+  },
+  "barbell upright row": {
+   "py": "zhilihuachuan",
+   "pyi": "zlhc",
+   "alias": [
+    "sanjiaoji",
+    "jiantou",
+    "直立划船"
+   ]
+  },
+  "dumbbell standing overhead press": {
+   "py": "zhanziyalingguotoutuiju",
+   "pyi": "zzylgttj",
+   "alias": [
+    "sanjiaoji",
+    "jiantou",
+    "站姿哑铃过头推举"
+   ]
+  },
+  "cable rear delt row (stirrups)": {
+   "py": "shengsuohousanjiaojihuachuan",
+   "pyi": "sshsjjhc",
+   "alias": [
+    "sanjiaoji",
+    "jiantou",
+    "绳索后三角肌划船"
+   ]
+  },
+  "dumbbell arnold press": {
+   "py": "anuodetuiju",
+   "pyi": "andtj",
+   "alias": [
+    "sanjiaoji",
+    "jiantou",
+    "阿诺德推举"
+   ]
+  },
+  "barbell lying triceps extension skull crusher": {
+   "py": "yangwosantoujishenzhansuilushi",
+   "pyi": "ywstjszsls",
+   "alias": [
+    "santou",
+    "sanboutou",
+    "仰卧三头肌伸展（碎颅式）"
+   ]
+  },
+  "bench dip (knees bent)": {
+   "py": "dengshangbiqushen",
+   "pyi": "dsbqs",
+   "alias": [
+    "santou",
+    "sanboutou",
+    "凳上臂屈伸"
+   ]
+  },
+  "dumbbell kickback": {
+   "py": "yalingfushenbiqushen",
+   "pyi": "ylfsbqs",
+   "alias": [
+    "santou",
+    "sanboutou",
+    "哑铃俯身臂屈伸"
+   ]
+  },
+  "dumbbell bicep curl with stork stance": {
+   "py": "yalingwanju",
+   "pyi": "ylwj",
+   "alias": [
+    "ertou",
+    "erboutou",
+    "哑铃弯举"
+   ]
+  },
+  "barbell curl": {
+   "py": "ganglingwanju",
+   "pyi": "glwj",
+   "alias": [
+    "ertou",
+    "erboutou",
+    "杠铃弯举"
+   ]
+  },
+  "dumbbell preacher curl": {
+   "py": "mushidengwanju",
+   "pyi": "msdwj",
+   "alias": [
+    "ertou",
+    "erboutou",
+    "牧师凳弯举"
+   ]
+  },
+  "close-grip push-up": {
+   "py": "zhaijufuwocheng",
+   "pyi": "zjfwc",
+   "alias": [
+    "santou",
+    "sanboutou",
+    "窄距俯卧撑"
+   ]
+  },
+  "cable triceps pushdown (v-bar)": {
+   "py": "shengsuoxiaya",
+   "pyi": "ssxy",
+   "alias": [
+    "santou",
+    "sanboutou",
+    "绳索下压"
+   ]
+  },
+  "diamond push-up": {
+   "py": "zuanshifuwocheng",
+   "pyi": "zsfwc",
+   "alias": [
+    "santou",
+    "sanboutou",
+    "钻石俯卧撑"
+   ]
+  },
+  "dumbbell hammer curl": {
+   "py": "chuishiwanju",
+   "pyi": "cswj",
+   "alias": [
+    "ertou",
+    "erboutou",
+    "锤式弯举"
+   ]
+  },
+  "dumbbell concentration curl": {
+   "py": "jizhongwanju",
+   "pyi": "jzwj",
+   "alias": [
+    "ertou",
+    "erboutou",
+    "集中弯举"
+   ]
+  },
+  "side plank hip adduction": {
+   "py": "cepingbankuanwaizhan",
+   "pyi": "cpbkwz",
+   "alias": [
+    "neishouji",
+    "侧平板髋外展"
+   ]
+  },
+  "smith leg press": {
+   "py": "daodeng",
+   "pyi": "dd",
+   "alias": [
+    "qiaotun",
+    "tunbu",
+    "倒蹬"
+   ]
+  },
+  "farmers walk": {
+   "py": "nongfuxingzou",
+   "pyi": "nfxz",
+   "alias": [
+    "gutouji",
+    "农夫行走"
+   ]
+  },
+  "barbell front squat": {
+   "py": "qiandun",
+   "pyi": "qd",
+   "alias": [
+    "qiaotun",
+    "tunbu",
+    "前蹲"
+   ]
+  },
+  "single leg squat (pistol) male": {
+   "py": "dantuishendun",
+   "pyi": "dtsd",
+   "alias": [
+    "qiaotun",
+    "tunbu",
+    "单腿深蹲"
+   ]
+  },
+  "smith sumo squat": {
+   "py": "shimisixiangpushendun",
+   "pyi": "smsxpsd",
+   "alias": [
+    "qiaotun",
+    "tunbu",
+    "史密斯相扑深蹲"
+   ]
+  },
+  "dumbbell lunge": {
+   "py": "yalinggongbudun",
+   "pyi": "ylgbd",
+   "alias": [
+    "qiaotun",
+    "tunbu",
+    "哑铃弓步蹲"
+   ]
+  },
+  "dumbbell squat": {
+   "py": "yalingshendun",
+   "pyi": "ylsd",
+   "alias": [
+    "qiaotun",
+    "tunbu",
+    "哑铃深蹲"
+   ]
+  },
+  "kettlebell turkish get up (squat style)": {
+   "py": "tuerqiqili",
+   "pyi": "teqql",
+   "alias": [
+    "qiaotun",
+    "tunbu",
+    "土耳其起立"
+   ]
+  },
+  "low glute bridge on floor": {
+   "py": "dimiantunqiao",
+   "pyi": "dmtq",
+   "alias": [
+    "qiaotun",
+    "tunbu",
+    "地面臀桥"
+   ]
+  },
+  "kettlebell swing": {
+   "py": "hulingbaidang",
+   "pyi": "hlbd",
+   "alias": [
+    "qiaotun",
+    "tunbu",
+    "壶铃摆荡"
+   ]
+  },
+  "flutter kicks": {
+   "py": "dashuititui",
+   "pyi": "dstt",
+   "alias": [
+    "qiaotun",
+    "tunbu",
+    "打水踢腿"
+   ]
+  },
+  "barbell good morning": {
+   "py": "zaoanshi",
+   "pyi": "zas",
+   "alias": [
+    "guoshengji",
+    "datuihou",
+    "早安式"
+   ]
+  },
+  "barbell split squat v. 2": {
+   "py": "ganglingfentuishendun",
+   "pyi": "glftsd",
+   "alias": [
+    "gutouji",
+    "杠铃分腿深蹲"
+   ]
+  },
+  "barbell hack squat": {
+   "py": "ganglinghakeshendun",
+   "pyi": "glhksd",
+   "alias": [
+    "qiaotun",
+    "tunbu",
+    "杠铃哈克深蹲"
+   ]
+  },
+  "barbell full squat": {
+   "py": "ganglingshendun",
+   "pyi": "glsd",
+   "alias": [
+    "qiaotun",
+    "tunbu",
+    "杠铃深蹲"
+   ]
+  },
+  "barbell deadlift": {
+   "py": "ganglingyingla",
+   "pyi": "glyl",
+   "alias": [
+    "qiaotun",
+    "tunbu",
+    "杠铃硬拉"
+   ]
+  },
+  "barbell glute bridge": {
+   "py": "ganglingtunqiao",
+   "pyi": "gltq",
+   "alias": [
+    "qiaotun",
+    "tunbu",
+    "杠铃臀桥"
+   ]
+  },
+  "barbell clean and press": {
+   "py": "ganglinggaofantuiju",
+   "pyi": "glgftj",
+   "alias": [
+    "gutouji",
+    "杠铃高翻推举"
+   ]
+  },
+  "seated piriformis stretch": {
+   "py": "lizhuangjilashen",
+   "pyi": "lzjls",
+   "alias": [
+    "qiaotun",
+    "tunbu",
+    "梨状肌拉伸"
+   ]
+  },
+  "jump squat": {
+   "py": "shenduntiao",
+   "pyi": "sdt",
+   "alias": [
+    "qiaotun",
+    "tunbu",
+    "深蹲跳"
+   ]
+  },
+  "dumbbell step-up": {
+   "py": "dengjie",
+   "pyi": "dj",
+   "alias": [
+    "qiaotun",
+    "tunbu",
+    "登阶"
+   ]
+  },
+  "barbell sumo deadlift": {
+   "py": "xiangpuyingla",
+   "pyi": "xpyl",
+   "alias": [
+    "qiaotun",
+    "tunbu",
+    "相扑硬拉"
+   ]
+  },
+  "barbell romanian deadlift": {
+   "py": "luomaniyayingla",
+   "pyi": "lmnyyl",
+   "alias": [
+    "qiaotun",
+    "tunbu",
+    "罗马尼亚硬拉"
+   ]
+  },
+  "all fours squad stretch": {
+   "py": "gusitoujilashen",
+   "pyi": "gstjls",
+   "alias": [
+    "gutouji",
+    "股四头肌拉伸"
+   ]
+  },
+  "hamstring stretch": {
+   "py": "guoshengjilashen",
+   "pyi": "gsjls",
+   "alias": [
+    "guoshengji",
+    "datuihou",
+    "腘绳肌拉伸"
+   ]
+  },
+  "lever leg extension": {
+   "py": "tuiqushen",
+   "pyi": "tqs",
+   "alias": [
+    "gutouji",
+    "腿屈伸"
+   ]
+  },
+  "lever lying leg curl": {
+   "py": "tuiwanju",
+   "pyi": "twj",
+   "alias": [
+    "guoshengji",
+    "datuihou",
+    "腿弯举"
+   ]
+  },
+  "sissy squat": {
+   "py": "xixishendun",
+   "pyi": "xxsd",
+   "alias": [
+    "gutouji",
+    "西西深蹲"
+   ]
+  },
+  "exercise ball hip flexor stretch": {
+   "py": "kuanqujilashen",
+   "pyi": "kqjls",
+   "alias": [
+    "qiaotun",
+    "tunbu",
+    "髋屈肌拉伸"
+   ]
+  },
+  "power clean": {
+   "py": "gaofan",
+   "pyi": "gf",
+   "alias": [
+    "guoshengji",
+    "datuihou",
+    "高翻"
+   ]
+  },
+  "dumbbell goblet squat": {
+   "py": "gaojiaobeishendun",
+   "pyi": "gjbsd",
+   "alias": [
+    "gutouji",
+    "高脚杯深蹲"
+   ]
+  },
+  "calf stretch with rope": {
+   "py": "xiaotuilashen",
+   "pyi": "xtls",
+   "alias": [
+    "xiaotui",
+    "小腿拉伸"
+   ]
+  },
+  "standing calf raise (on a staircase)": {
+   "py": "zhanzitizhong",
+   "pyi": "zztz",
+   "alias": [
+    "xiaotui",
+    "站姿提踵"
+   ]
+  },
+  "box jump down with one leg stabilization": {
+   "py": "tiaoxiang",
+   "pyi": "tx",
+   "alias": [
+    "xiaotui",
+    "跳箱"
+   ]
+  },
+  "band v-up": {
+   "py": "ziqishen",
+   "pyi": "zqs",
+   "alias": [
+    "fuji",
+    "fubu",
+    "v字起身"
+   ]
+  },
+  "lying leg raise flat bench": {
+   "py": "yangwotaitui",
+   "pyi": "ywtt",
+   "alias": [
+    "fuji",
+    "fubu",
+    "仰卧抬腿"
+   ]
+  },
+  "sit-up v. 2": {
+   "py": "yangwoqizuo",
+   "pyi": "ywqz",
+   "alias": [
+    "fuji",
+    "fubu",
+    "仰卧起坐"
+   ]
+  },
+  "russian twist": {
+   "py": "eluosizhuanti",
+   "pyi": "elszt",
+   "alias": [
+    "fuji",
+    "fubu",
+    "俄罗斯转体"
+   ]
+  },
+  "wheel rollerout": {
+   "py": "jianfulungundong",
+   "pyi": "jflgd",
+   "alias": [
+    "fuji",
+    "fubu",
+    "健腹轮滚动"
+   ]
+  },
+  "crunch floor": {
+   "py": "juanfu",
+   "pyi": "jf",
+   "alias": [
+    "fuji",
+    "fubu",
+    "卷腹"
+   ]
+  },
+  "reverse crunch": {
+   "py": "fanxiangjuanfu",
+   "pyi": "fxjf",
+   "alias": [
+    "fuji",
+    "fubu",
+    "反向卷腹"
+   ]
+  },
+  "front plank with twist": {
+   "py": "pingbanzhuanti",
+   "pyi": "pbzt",
+   "alias": [
+    "fuji",
+    "fubu",
+    "平板转体"
+   ]
+  },
+  "hanging leg raise": {
+   "py": "xuanchuitaitui",
+   "pyi": "xctt",
+   "alias": [
+    "fuji",
+    "fubu",
+    "悬垂抬腿"
+   ]
+  },
+  "dead bug": {
+   "py": "sichongshi",
+   "pyi": "scs",
+   "alias": [
+    "fuji",
+    "fubu",
+    "死虫式"
+   ]
+  },
+  "inchworm": {
+   "py": "maomaochongpa",
+   "pyi": "mmcp",
+   "alias": [
+    "fuji",
+    "fubu",
+    "毛毛虫爬"
+   ]
+  },
+  "air bike": {
+   "py": "kongzhongdanche",
+   "pyi": "kzdc",
+   "alias": [
+    "fuji",
+    "fubu",
+    "空中单车"
+   ]
+  },
+  "band bicycle crunch": {
+   "py": "zixingchejuanfu",
+   "pyi": "zxcjf",
+   "alias": [
+    "fuji",
+    "fubu",
+    "自行车卷腹"
+   ]
+  },
+  "jack jump (male)": {
+   "py": "kaihetiao",
+   "pyi": "kht",
+   "alias": [
+    "youyang",
+    "xifei",
+    "开合跳"
+   ]
+  },
+  "burpee": {
+   "py": "bobitiao",
+   "pyi": "bbt",
+   "alias": [
+    "youyang",
+    "xifei",
+    "波比跳"
+   ]
+  },
+  "bear crawl": {
+   "py": "xiongpa",
+   "pyi": "xp",
+   "alias": [
+    "youyang",
+    "xifei",
+    "熊爬"
+   ]
+  },
+  "mountain climber": {
+   "py": "dengshanzhe",
+   "pyi": "dsz",
+   "alias": [
+    "youyang",
+    "xifei",
+    "登山者"
+   ]
+  },
+  "walking high knees lunge": {
+   "py": "xingzougaotaituigongbu",
+   "pyi": "xzgttgb",
+   "alias": [
+    "youyang",
+    "xifei",
+    "行走高抬腿弓步"
+   ]
+  },
+  "side push neck stretch": {
+   "py": "jingbulashen",
+   "pyi": "jbls",
+   "alias": [
+    "tijianjiaji",
+    "颈部拉伸"
+   ]
+  }
+ }
+}

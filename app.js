@@ -21,7 +21,16 @@ function esc(value) { return String(value ?? "").replace(/[&<>\"']/g, c => ({ "&
 function saveFavorites() { localStorage.setItem("motionfit-favorites", JSON.stringify([...favorites])); document.querySelector("#favoriteCount").textContent = favorites.size; }
 function showToast(msg) { const t = document.querySelector("#toast"); t.textContent = msg; t.classList.add("show"); setTimeout(() => t.classList.remove("show"), 1800); }
 function card(ex) { const saved = favorites.has(ex.英文名); return `<article class="exercise-card"><button class="favorite-button ${saved ? 'saved' : ''}" data-fav="${encodeURIComponent(ex.英文名)}" aria-label="${saved ? '取消收藏' : '收藏'} ${esc(ex.标准中文名)}">${saved ? '♥' : '♡'}</button><a class="media-button" href="#exercise/${encodeURIComponent(ex.英文名)}"><img loading="lazy" data-path="${esc(ex.gif)}" src="${imageUrl(ex.gif)}" alt="${esc(ex.标准中文名)}" onerror="imgFallback(this)"></a><div class="card-content"><h3>${esc(ex.标准中文名)}</h3><div class="card-meta"><span class="tag">${esc(label(PARTS, ex.身体部位))}</span><span class="tag">${esc(label(EQUIPMENT, ex.器械))}</span></div></div></article>`; }
-function filtered() { return exercises.filter(e => (!query || `${e.标准中文名} ${e.英文名} ${label(TARGET, e.目标肌群)}`.toLowerCase().includes(query.toLowerCase())) && (!selectedPart || e.身体部位 === selectedPart) && (!selectedEquipment || e.器械 === selectedEquipment) && (!document.querySelector("#bodyweightOnly")?.checked || e.器械 === "body weight")); }
+function searchHaystack(e) {
+  if (e.__hay) return e.__hay;
+  const idx = pinyinIndex[e.英文名] || {};
+  e.__hay = [
+    e.标准中文名, e.英文名, label(TARGET, e.目标肌群), label(PARTS, e.身体部位), label(EQUIPMENT, e.器械),
+    idx.py || "", idx.pyi || "", ...(idx.alias || []),
+  ].join(" ").toLowerCase();
+  return e.__hay;
+}
+function filtered() { return exercises.filter(e => (!query || searchHaystack(e).includes(query.toLowerCase().replace(/\s+/g, "")) || searchHaystack(e).includes(query.toLowerCase())) && (!selectedPart || e.身体部位 === selectedPart) && (!selectedEquipment || e.器械 === selectedEquipment) && (!document.querySelector("#bodyweightOnly")?.checked || e.器械 === "body weight")); }
 function renderFilters() { const parts = [...new Set(exercises.map(e => e.身体部位))], eq = [...new Set(exercises.map(e => e.器械))]; document.querySelector("#partFilters").innerHTML = `<button class="chip ${!selectedPart ? 'selected' : ''}" data-part="">全部</button>` + parts.map(x => `<button class="chip ${selectedPart === x ? 'selected' : ''}" data-part="${esc(x)}">${esc(label(PARTS, x))}</button>`).join(""); document.querySelector("#equipmentFilters").innerHTML = `<button class="chip ${!selectedEquipment ? 'selected' : ''}" data-equipment="">全部</button>` + eq.map(x => `<button class="chip ${selectedEquipment === x ? 'selected' : ''}" data-equipment="${esc(x)}">${esc(label(EQUIPMENT, x))}</button>`).join(""); }
 function renderLibrary() { const list = filtered(); document.querySelector("#exerciseGrid").innerHTML = list.map(card).join(""); document.querySelector("#resultCount").textContent = `${list.length} 个动作`; document.querySelector("#resultTitle").textContent = selectedPart ? label(PARTS, selectedPart) : query ? `搜索“${query}”` : "全部动作"; document.querySelector("#emptyState").hidden = list.length > 0; renderFilters(); bindCards(); }
 function bindCards() { document.querySelectorAll("[data-fav]").forEach(b => b.onclick = e => { e.preventDefault(); const id = decodeURIComponent(b.dataset.fav); favorites.has(id) ? (favorites.delete(id), showToast("已取消收藏")) : (favorites.add(id), showToast("已收藏")); saveFavorites(); renderLibrary(); }); }
@@ -121,6 +130,7 @@ function renderQuickParts() {
 
 // ============================================================ 训练计划（B6）
 let plans = [], records = JSON.parse(localStorage.getItem("dongdui-records") || "[]");
+let pinyinIndex = {};
 
 function planById(id) { return plans.find(p => p.id === id); }
 function fmtMin(m) { return m < 60 ? `${m} 分钟` : `${Math.floor(m / 60)} 小时 ${m % 60} 分`; }
@@ -329,14 +339,29 @@ function startSolo(en) {
 }
 
 function route() { document.querySelectorAll(".view").forEach(v => { v.hidden = true; v.classList.remove("active-view"); }); document.querySelectorAll(".top-nav a").forEach(a => a.classList.remove("active")); const hash = location.hash || "#library"; if (hash.startsWith("#exercise/")) { document.querySelector("#detail").hidden = false; detail(decodeURIComponent(hash.slice("#exercise/".length))); } else { const id = hash.slice(1).split("/")[0]; const viewId = id === "plan" ? "plans" : id; const view = document.querySelector(`#${viewId}`) || document.querySelector("#library"); view.hidden = false; view.classList.add("active-view"); document.querySelector(`.top-nav a[href='#${view.id}']`)?.classList.add("active"); document.querySelectorAll('.top-nav a').forEach(a => { if (a.getAttribute('href') === '#plans' && view.id === 'plans') a.classList.add('active'); }); if (id === "favorites") renderFavorites(); if (id === "plans") renderPlans(); if (id === "plan") renderPlan(decodeURIComponent(hash.split("/")[1] || "")); if (id === "workout") renderWorkout(); } }
-async function init() { try { const [csvRes, enhancementRes, planRes] = await Promise.all([fetch("精选100动作.csv?v=7", { cache: "no-store" }), fetch("动作增强数据.json?v=8", { cache: "no-store" }), fetch("训练计划.json?v=1", { cache: "no-store" })]); exercises = parseCSV(await csvRes.text()); enhanced = await enhancementRes.json();
-    try { plans = (await planRes.json()).plans || []; } catch (e) { plans = []; } document.querySelector("#totalCount").textContent = exercises.length; renderToday(); renderWeekPlan(); renderQuickParts(); renderFilters(); renderLibrary(); saveFavorites(); } catch (e) { document.querySelector("#exerciseGrid").innerHTML = `<div class="empty-state"><h3>动作数据加载失败</h3><p>请通过本地开发服务器打开此页面。</p></div>`; } document.querySelector("#searchInput").oninput = e => { query = e.target.value.trim(); renderLibrary(); }; document.querySelector("#filterToggle").onclick = e => { const f = document.querySelector("#filters"); f.hidden = !f.hidden; e.currentTarget.setAttribute("aria-expanded", String(!f.hidden)); }; document.querySelector("#bodyweightOnly").onchange = renderLibrary; document.querySelector("#clearFilters").onclick = () => { query = ""; selectedPart = ""; selectedEquipment = ""; document.querySelector("#searchInput").value = ""; document.querySelector("#bodyweightOnly").checked = false; renderLibrary(); }; document.addEventListener("click", e => {
+function renderSkeletons(n = 8) {
+  const grid = document.querySelector("#exerciseGrid"); if (!grid) return;
+  grid.innerHTML = Array.from({ length: n }, () => '<div class="skeleton-card"><div class="skeleton-media"></div><div class="skeleton-line"></div><div class="skeleton-line short"></div></div>').join("");
+}
+
+async function init() { try { const [csvRes, enhancementRes, planRes, pinyinRes] = await Promise.all([fetch("精选100动作.csv?v=7", { cache: "no-store" }), fetch("动作增强数据.json?v=8", { cache: "no-store" }), fetch("训练计划.json?v=1", { cache: "no-store" }), fetch("拼音索引.json?v=1", { cache: "no-store" }).catch(() => null)]); exercises = parseCSV(await csvRes.text()); enhanced = await enhancementRes.json();
+    try { plans = (await planRes.json()).plans || []; } catch (e) { plans = []; }
+    try { pinyinIndex = pinyinRes ? (await pinyinRes.json()).items || {} : {}; } catch (e) { pinyinIndex = {}; } document.querySelector("#totalCount").textContent = exercises.length; renderToday(); renderWeekPlan(); renderQuickParts(); renderFilters(); renderLibrary(); saveFavorites(); } catch (e) { document.querySelector("#exerciseGrid").innerHTML = `<div class="empty-state"><h3>动作数据加载失败</h3><p>请通过本地开发服务器打开此页面。</p></div>`; } document.querySelector("#searchInput").oninput = e => { query = e.target.value.trim(); renderLibrary(); }; document.querySelector("#filterToggle").onclick = e => { const f = document.querySelector("#filters"); f.hidden = !f.hidden; e.currentTarget.setAttribute("aria-expanded", String(!f.hidden)); }; document.querySelector("#bodyweightOnly").onchange = renderLibrary; document.querySelector("#clearFilters").onclick = () => { query = ""; selectedPart = ""; selectedEquipment = ""; document.querySelector("#searchInput").value = ""; document.querySelector("#bodyweightOnly").checked = false; renderLibrary(); }; document.addEventListener("click", e => {
   const calBtn = e.target.closest("[data-cal]");
   if (calBtn) { e.preventDefault(); calOffset += Number(calBtn.dataset.cal); renderRecords(); return; }
   const startBtn = e.target.closest("[data-plan]");
   if (startBtn) { e.preventDefault(); startPlan(startBtn.dataset.plan); return; }
   const soloBtn = e.target.closest("[data-solo]");
-  if (soloBtn) { e.preventDefault(); startSolo(soloBtn.dataset.solo); return; } if (e.target.closest("[data-quick]")) { selectedPart = e.target.closest("[data-quick]").dataset.quick; const f = document.querySelector("#filters"); if (f.hidden) { f.hidden = false; document.querySelector("#filterToggle").setAttribute("aria-expanded", "true"); } renderLibrary(); document.querySelector("#exerciseGrid").scrollIntoView({ behavior: "smooth", block: "start" }); } if (e.target.matches("[data-part]")) { selectedPart = e.target.dataset.part; renderLibrary(); } if (e.target.matches("[data-equipment]")) { selectedEquipment = e.target.dataset.equipment; renderLibrary(); } }); document.querySelector("#aboutButton").onclick = () => location.hash = "#about"; window.addEventListener("hashchange", route); route(); }
+  if (soloBtn) { e.preventDefault(); startSolo(soloBtn.dataset.solo); return; } if (e.target.closest("[data-quick]")) { selectedPart = e.target.closest("[data-quick]").dataset.quick; const f = document.querySelector("#filters"); if (f.hidden) { f.hidden = false; document.querySelector("#filterToggle").setAttribute("aria-expanded", "true"); } renderLibrary(); document.querySelector("#exerciseGrid").scrollIntoView({ behavior: "smooth", block: "start" }); } if (e.target.matches("[data-part]")) { selectedPart = e.target.dataset.part; renderLibrary(); } if (e.target.matches("[data-equipment]")) { selectedEquipment = e.target.dataset.equipment; renderLibrary(); } }); document.querySelector("#aboutButton").onclick = () => location.hash = "#about";
+  const themeBtn = document.querySelector("#themeButton");
+  const syncThemeBtn = () => { if (themeBtn) themeBtn.textContent = document.documentElement.dataset.theme === "dark" ? "☀" : "☾"; };
+  syncThemeBtn();
+  if (themeBtn) themeBtn.onclick = () => {
+    const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem("forma-theme", next);
+    syncThemeBtn();
+  }; window.addEventListener("hashchange", route); route(); }
 window.addEventListener("beforeinstallprompt", event => { event.preventDefault(); installPrompt = event; const button = document.querySelector("#installButton"); button.hidden = false; });
 document.querySelector("#installButton").onclick = async () => { if (!installPrompt) return; installPrompt.prompt(); await installPrompt.userChoice; installPrompt = null; document.querySelector("#installButton").hidden = true; };
 init();

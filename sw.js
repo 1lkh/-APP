@@ -1,5 +1,5 @@
-const CACHE = "dong-dui-v14";
-const SHELL = ["./", "./index.html", "./styles.css", "./app.js", "./动作增强数据.json", "./精选100动作.csv", "./训练计划.json", "./manifest.webmanifest", "./icon.svg", "./icon-192.png"];
+const CACHE = "dong-dui-v15";
+const SHELL = ["./", "./index.html", "./styles.css", "./app.js", "./动作增强数据.json", "./精选100动作.csv", "./训练计划.json", "./manifest.webmanifest", "./icon.svg", "./icon-192.png", "./拼音索引.json"];
 
 self.addEventListener("install", event => event.waitUntil(
   caches.open(CACHE).then(cache => cache.addAll(SHELL)).then(() => self.skipWaiting())
