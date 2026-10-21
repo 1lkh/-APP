@@ -107,3 +107,30 @@
 /* 统一 hidden 行为：避免 display:grid/flex 覆盖 hidden 属性 */
 [hidden]{display:none!important}
 .wo-timer small.wo-unit{font-size:.28em;font-weight:700;color:var(--muted);margin-left:.08em;letter-spacing:0}
+
+/* ---- 首页双卡：今日一练 + 本周训练（B8） ---- */
+.promo-row{display:grid;grid-template-columns:1.05fr .95fr;gap:14px;margin-bottom:22px}
+.promo-row .today{margin:0}
+.promo-row .today-card{max-width:none;height:100%}
+.week-plan{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px;display:flex;flex-direction:column}
+.week-head h2{font-size:22px;margin:2px 0 0;letter-spacing:-.03em}
+.week-meta{color:var(--muted);font-size:13px;line-height:1.55;margin:8px 0 12px}
+.week-stats{display:flex;gap:18px;font-size:11px;color:var(--muted);margin-bottom:14px}
+.week-stats strong{display:block;font-size:20px;color:var(--ink);letter-spacing:-.03em}
+.week-actions{display:flex;gap:9px;margin-top:auto}
+.week-actions .primary,.week-actions .secondary{padding:10px 16px;font-size:13px}
+/* ---- 打卡日历（B7） ---- */
+.cal{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:18px;max-width:520px}
+.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.cal-head strong{font-size:15px}
+.cal-head button{width:30px;height:30px;border-radius:50%;background:var(--paper);border:1px solid var(--line);color:var(--muted);font-size:17px;line-height:1}
+.cal-week,.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.cal-week span{text-align:center;font-size:11px;color:var(--muted);padding-bottom:5px}
+.cal-cell{position:relative;aspect-ratio:1;display:grid;place-items:center;font-size:12px;border-radius:8px;color:var(--muted)}
+.cal-cell.empty{visibility:hidden}
+.cal-cell.done{background:var(--soft);color:var(--ink);font-weight:700}
+.cal-cell.today{outline:2px solid var(--ink);outline-offset:-2px}
+.cal-dot{position:absolute;bottom:5px;width:4px;height:4px;border-radius:50%;background:var(--accent);display:inline-block}
+.cal-legend{font-size:11px;color:var(--muted);margin:12px 0 0;display:flex;align-items:center;gap:6px}
+.cal-legend .cal-dot{position:static}
+@media(max-width:850px){.promo-row{grid-template-columns:1fr}}

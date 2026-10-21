@@ -8,11 +8,13 @@ let favorites = new Set(JSON.parse(localStorage.getItem("motionfit-favorites") |
 let installPrompt = null;
 
 function parseCSV(text) { const rows = []; let row = [], cell = "", quoted = false; for (let i = 0; i < text.length; i += 1) { const c = text[i], n = text[i + 1]; if (c === '"' && quoted && n === '"') { cell += '"'; i += 1; continue; } if (c === '"') { quoted = !quoted; continue; } if (c === ',' && !quoted) { row.push(cell); cell = ''; continue; } if ((c === '\n' || c === '\r') && !quoted) { if (c === '\r' && n === '\n') i += 1; row.push(cell); if (row.some(Boolean)) rows.push(row); row = []; cell = ''; continue; } cell += c; } if (cell || row.length) { row.push(cell); rows.push(row); } const head = rows.shift() || []; return rows.map(r => Object.fromEntries(head.map((h, i) => [h, r[i] || ""]))); }
-function imageUrl(path) { return CDN_BASE + path; }
+function imageUrl(path) { return CDN_BASE + String(path).replace(/\.gif$/i, ".webp"); }
 function imgFallback(el) {
   const path = el.getAttribute("data-path") || "";
-  if (path && el.src.indexOf(CDN_FALLBACK) === -1) { el.src = CDN_FALLBACK + path; return; }
-  el.outerHTML = '<div class="media-fallback">◌</div>';
+  const cur = el.getAttribute("src") || "";
+  if (/\.webp$/i.test(cur)) { el.src = CDN_BASE + path; return; }                 // ① WebP 失败 → 本地 GIF
+  if (cur.indexOf(CDN_FALLBACK) === -1) { el.src = CDN_FALLBACK + path; return; } // ② 本地 GIF 失败 → jsDelivr
+  el.outerHTML = '<div class="media-fallback">◌</div>';                          // ③ 全失败 → 占位
 }
 function label(map, key) { return map[key] || key; }
 function esc(value) { return String(value ?? "").replace(/[&<>\"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" }[c])); }
@@ -76,6 +78,20 @@ function paramBlock(params) {
   return `<div class="param-table">${rows}</div><p class="param-note">组数 × 次数为起始建议，按恢复情况和动作质量调整；动作变形就结束该组。</p>`;
 }
 
+
+// ---- 本周训练（B8）：按星期几固定推荐一套计划 ----
+const WEEK_PLAN = ["full-body-bw", "chest", "back", "legs", "shoulders-arms", "core", "hiit"];
+const WEEK_NAME = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
+function renderWeekPlan() {
+  const el = document.querySelector("#weekPlan"); if (!el) return;
+  const now = new Date();
+  const planId = WEEK_PLAN[(now.getDay() + 6) % 7];
+  const p = planById(planId) || plans[0];
+  if (!p) return;
+  const cover = exercises.find(e => e.英文名 === p.items[0]?.en);
+  el.hidden = false;
+  el.innerHTML = `<div class="week-head"><p class="eyebrow">${WEEK_NAME[now.getDay()]} · 本周训练</p><h2>${esc(p.name)}</h2></div><p class="week-meta">${esc(p.goal)}</p><div class="week-stats"><span><strong>${p.minutes}</strong>分钟</span><span><strong>${p.items.length}</strong>动作</span><span><strong>${p.items.reduce((n, i) => n + i.sets, 0)}</strong>组</span></div><div class="week-actions"><button class="primary" data-plan="${esc(p.id)}">开始跟练</button><a class="secondary" href="#plan/${encodeURIComponent(p.id)}">看计划</a></div>`;
+}
 // ---- 今日一练 / 部位快捷入口（A4） ----
 const STEP_EXCLUDE = /拉伸|stretch|dog|颈部/i;
 function pickToday() {
@@ -141,12 +157,31 @@ function streakDays(recs) {
   while (days.has(d.toDateString())) { n += 1; d.setDate(d.getDate() - 1); }
   return n;
 }
+let calOffset = 0;
+function calendarHTML(recs) {
+  const byDay = new Map();
+  recs.forEach(r => { const d = new Date(r.ts); const k = `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`; const cur = byDay.get(k) || { sets: 0, minutes: 0, n: 0 }; cur.sets += r.sets || 0; cur.minutes += r.minutes || 0; cur.n += 1; byDay.set(k, cur); });
+  const base = new Date(); base.setDate(1); base.setMonth(base.getMonth() + calOffset);
+  const y = base.getFullYear(), m = base.getMonth();
+  const startDow = (new Date(y, m, 1).getDay() + 6) % 7;
+  const days = new Date(y, m + 1, 0).getDate();
+  const today = new Date();
+  const isThisMonth = today.getFullYear() === y && today.getMonth() === m;
+  const cells = [];
+  for (let i = 0; i < startDow; i += 1) cells.push('<span class="cal-cell empty"></span>');
+  for (let d = 1; d <= days; d += 1) {
+    const info = byDay.get(`${y}-${m}-${d}`);
+    const isToday = isThisMonth && today.getDate() === d;
+    cells.push(`<span class="cal-cell${info ? " done" : ""}${isToday ? " today" : ""}"${info ? ` title="${info.n} 次训练 · ${info.sets} 组 · ${info.minutes} 分钟"` : ""}>${d}${info ? '<i class="cal-dot"></i>' : ""}</span>`);
+  }
+  return `<div class="cal"><div class="cal-head"><button data-cal="-1" aria-label="上个月">‹</button><strong>${y} 年 ${m + 1} 月</strong><button data-cal="1" aria-label="下个月">›</button></div><div class="cal-week">${["一", "二", "三", "四", "五", "六", "日"].map(x => `<span>${x}</span>`).join("")}</div><div class="cal-grid">${cells.join("")}</div><p class="cal-legend"><i class="cal-dot"></i> 当天有训练记录 · 深色圈是今天</p></div>`;
+}
 function renderRecords() {
   const el = document.querySelector("#recordPanel"); if (!el) return;
   const recs = getRecords();
-  if (!recs.length) { el.innerHTML = '<div class="record-empty"><strong>还没有训练记录</strong><p>跟着上面的计划练一次，这里会自动出现你的记录。</p></div>'; return; }
+  if (!recs.length) { el.innerHTML = `${calendarHTML(recs)}<div class="record-empty"><strong>还没有训练记录</strong><p>跟着上面的计划练一次，这里会自动出现你的记录。</p></div>`; return; }
   const totalMin = recs.reduce((n, r) => n + (r.minutes || 0), 0);
-  el.innerHTML = `<div class="record-head"><div><p class="eyebrow">训练记录</p><h2>已经练了 ${recs.length} 次</h2></div><div class="record-stats"><span><strong>${totalMin}</strong>累计分钟</span><span><strong>${streakDays(recs)}</strong>连续天数</span></div></div><ul class="record-list">${recs.slice(0, 6).map(r => `<li><span class="record-date">${new Date(r.ts).toLocaleDateString("zh-CN", { month: "numeric", day: "numeric" })}</span><span class="record-name">${esc(r.title)}</span><span class="record-detail">${r.sets} 组 · ${r.minutes} 分钟</span></li>`).join("")}</ul>`;
+  el.innerHTML = `<div class="record-head"><div><p class="eyebrow">训练记录</p><h2>已经练了 ${recs.length} 次</h2></div><div class="record-stats"><span><strong>${totalMin}</strong>累计分钟</span><span><strong>${streakDays(recs)}</strong>连续天数</span><span><strong>${new Set(recs.map(r => new Date(r.ts).toDateString())).size}</strong>打卡天数</span></div></div>${calendarHTML(recs)}<ul class="record-list">${recs.slice(0, 8).map(r => `<li><span class="record-date">${new Date(r.ts).toLocaleDateString("zh-CN", { month: "numeric", day: "numeric" })}</span><span class="record-name">${esc(r.title)}</span><span class="record-detail">${r.sets} 组 · ${r.minutes} 分钟</span></li>`).join("")}</ul>`;
 }
 
 // ============================================================ 跟练引擎（B5）
@@ -295,7 +330,9 @@ function startSolo(en) {
 
 function route() { document.querySelectorAll(".view").forEach(v => { v.hidden = true; v.classList.remove("active-view"); }); document.querySelectorAll(".top-nav a").forEach(a => a.classList.remove("active")); const hash = location.hash || "#library"; if (hash.startsWith("#exercise/")) { document.querySelector("#detail").hidden = false; detail(decodeURIComponent(hash.slice("#exercise/".length))); } else { const id = hash.slice(1).split("/")[0]; const viewId = id === "plan" ? "plans" : id; const view = document.querySelector(`#${viewId}`) || document.querySelector("#library"); view.hidden = false; view.classList.add("active-view"); document.querySelector(`.top-nav a[href='#${view.id}']`)?.classList.add("active"); document.querySelectorAll('.top-nav a').forEach(a => { if (a.getAttribute('href') === '#plans' && view.id === 'plans') a.classList.add('active'); }); if (id === "favorites") renderFavorites(); if (id === "plans") renderPlans(); if (id === "plan") renderPlan(decodeURIComponent(hash.split("/")[1] || "")); if (id === "workout") renderWorkout(); } }
 async function init() { try { const [csvRes, enhancementRes, planRes] = await Promise.all([fetch("精选100动作.csv?v=7", { cache: "no-store" }), fetch("动作增强数据.json?v=8", { cache: "no-store" }), fetch("训练计划.json?v=1", { cache: "no-store" })]); exercises = parseCSV(await csvRes.text()); enhanced = await enhancementRes.json();
-    try { plans = (await planRes.json()).plans || []; } catch (e) { plans = []; } document.querySelector("#totalCount").textContent = exercises.length; renderToday(); renderQuickParts(); renderFilters(); renderLibrary(); saveFavorites(); } catch (e) { document.querySelector("#exerciseGrid").innerHTML = `<div class="empty-state"><h3>动作数据加载失败</h3><p>请通过本地开发服务器打开此页面。</p></div>`; } document.querySelector("#searchInput").oninput = e => { query = e.target.value.trim(); renderLibrary(); }; document.querySelector("#filterToggle").onclick = e => { const f = document.querySelector("#filters"); f.hidden = !f.hidden; e.currentTarget.setAttribute("aria-expanded", String(!f.hidden)); }; document.querySelector("#bodyweightOnly").onchange = renderLibrary; document.querySelector("#clearFilters").onclick = () => { query = ""; selectedPart = ""; selectedEquipment = ""; document.querySelector("#searchInput").value = ""; document.querySelector("#bodyweightOnly").checked = false; renderLibrary(); }; document.addEventListener("click", e => {
+    try { plans = (await planRes.json()).plans || []; } catch (e) { plans = []; } document.querySelector("#totalCount").textContent = exercises.length; renderToday(); renderWeekPlan(); renderQuickParts(); renderFilters(); renderLibrary(); saveFavorites(); } catch (e) { document.querySelector("#exerciseGrid").innerHTML = `<div class="empty-state"><h3>动作数据加载失败</h3><p>请通过本地开发服务器打开此页面。</p></div>`; } document.querySelector("#searchInput").oninput = e => { query = e.target.value.trim(); renderLibrary(); }; document.querySelector("#filterToggle").onclick = e => { const f = document.querySelector("#filters"); f.hidden = !f.hidden; e.currentTarget.setAttribute("aria-expanded", String(!f.hidden)); }; document.querySelector("#bodyweightOnly").onchange = renderLibrary; document.querySelector("#clearFilters").onclick = () => { query = ""; selectedPart = ""; selectedEquipment = ""; document.querySelector("#searchInput").value = ""; document.querySelector("#bodyweightOnly").checked = false; renderLibrary(); }; document.addEventListener("click", e => {
+  const calBtn = e.target.closest("[data-cal]");
+  if (calBtn) { e.preventDefault(); calOffset += Number(calBtn.dataset.cal); renderRecords(); return; }
   const startBtn = e.target.closest("[data-plan]");
   if (startBtn) { e.preventDefault(); startPlan(startBtn.dataset.plan); return; }
   const soloBtn = e.target.closest("[data-solo]");

@@ -8,7 +8,7 @@
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="apple-touch-icon" href="icon.svg" />
     <title>动得对｜健身动作库</title>
-    <link rel="stylesheet" href="styles.css?v=9" />
+    <link rel="stylesheet" href="styles.css?v=10" />
   </head>
   <body>
     <header class="topbar">
@@ -36,7 +36,10 @@
           <div class="hero-stat"><strong id="totalCount">—</strong><span>精选动作</span></div>
         </div>
 
-        <section class="today" id="today" hidden aria-label="今日一练"></section>
+        <div class="promo-row">
+          <section class="today" id="today" hidden aria-label="今日一练"></section>
+          <section class="week-plan" id="weekPlan" hidden aria-label="本周训练"></section>
+        </div>
         <nav class="quick-parts" id="quickParts" aria-label="按身体部位快速浏览"></nav>
 
         <div class="toolbar">
@@ -74,9 +77,9 @@
     </main>
 
     <div id="toast" class="toast" role="status"></div>
-    <script src="app.js?v=10"></script>
+    <script src="app.js?v=11"></script>
     <script>
-      if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js?v=11", { updateViaCache: "none" }).then(reg => reg.update()).catch(() => {});
+      if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js?v=12", { updateViaCache: "none" }).then(reg => reg.update()).catch(() => {});
     </script>
   </body>
 </html>
