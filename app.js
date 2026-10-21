@@ -40,11 +40,70 @@ function detail(name) {
   const breathing = d?.breathing || "暂无动作专属呼吸提示，待教练复核。";
   const programming = d?.programming || "暂无动作专属训练建议，待教练复核；不要根据原始 target 标签自行安排负重。";
   const safety = d?.safety || "详细安全边界尚未复核；出现疼痛、麻木、眩晕或放射症状请立即停止。";
-  document.querySelector("#detail").innerHTML = `<a href="#library" class="back-link">← 返回动作库</a><div class="detail-head"><div class="detail-media"><img data-path="${esc(ex.gif)}" src="${imageUrl(ex.gif)}" alt="${esc(ex.标准中文名)}" onerror="imgFallback(this)"></div><div class="detail-copy"><p class="eyebrow">${esc(label(PARTS, ex.身体部位))} · ${esc(label(EQUIPMENT, ex.器械))}</p><h1>${esc(ex.标准中文名)}</h1><p class="english">${esc(ex.英文名)}</p><div class="detail-tags"><span class="tag">主要目标：${esc(primaryGoal)}</span><span class="tag">动作模式：${esc(d?.movement_pattern || "待复核")}</span></div><div class="detail-actions"><button class="primary" data-fav="${encodeURIComponent(ex.英文名)}">${favorites.has(ex.英文名) ? '♥ 已收藏' : '♡ 收藏动作'}</button><a class="secondary" href="#library">继续浏览</a></div></div></div><section class="detail-section"><h2>动作拆解</h2><div class="step-list">${steps.map((s, i) => `<div class="step"><span class="step-num">0${i + 1}</span><span>${esc(s)}</span></div>`).join("")}</div></section><section class="detail-section"><h2>训练重点</h2><div class="detail-columns"><div class="info-panel"><h3>主要参与肌群</h3>${listItems(primary)}${secondary.length ? `<h3 class="subheading">辅助与稳定</h3>${listItems(secondary)}` : ""}</div><div class="info-panel"><h3>可执行提示</h3>${listItems(cues, "cue-list")}${d?.not_the_goal ? `<p class="not-goal"><strong>不要误解：</strong>${esc(d.not_the_goal)}</p>` : ""}</div></div></section><section class="detail-section"><h2>呼吸、错误与训练建议</h2><div class="detail-columns"><div class="info-panel"><h3>呼吸</h3><p>${esc(breathing)}</p><h3 class="subheading">常见错误</h3>${listItems(errors)}</div><div class="info-panel"><h3>训练建议</h3><p>${esc(programming)}</p><h3 class="subheading">安全边界</h3><p>${esc(safety)}</p></div></div></section><section class="detail-section research-note"><h2>资料状态</h2><p><strong>${esc(status)}</strong></p>${sources.length ? `<details><summary>查看参考依据</summary>${listItems(sources)}</details>` : "<p>当前只有开源元数据，详细动作资料正在逐条复核。</p>"}<p class="attribution-line">素材署名：© Gym visual — https://gymvisual.com/</p></section>`;
+  const rel = related(ex);
+  const paramSection = `<section class="detail-section"><h2>训练参数速查</h2>${paramBlock(d?.params)}</section>`;
+  const relSection = `<section class="detail-section"><h2>同类动作</h2><div class="related-grid">${relatedBlock("退阶 · 更简单", rel.down, "这个部位没有更简单的同类动作，可以先降重量或减小幅度。")}${relatedBlock("进阶 · 更难", rel.up, "这个部位暂时没有更高阶的同类动作。")}${relatedBlock("替代 · 换器械", rel.alt, "同目标肌群暂无其他器械版本。")}</div></section>`;
+  document.querySelector("#detail").innerHTML = `<a href="#library" class="back-link">← 返回动作库</a><div class="detail-head"><div class="detail-media"><img data-path="${esc(ex.gif)}" src="${imageUrl(ex.gif)}" alt="${esc(ex.标准中文名)}" onerror="imgFallback(this)"></div><div class="detail-copy"><p class="eyebrow">${esc(label(PARTS, ex.身体部位))} · ${esc(label(EQUIPMENT, ex.器械))}</p><h1>${esc(ex.标准中文名)}</h1><p class="english">${esc(ex.英文名)}</p><div class="detail-tags"><span class="tag">主要目标：${esc(primaryGoal)}</span><span class="tag">动作模式：${esc(d?.movement_pattern || "待复核")}</span><span class="tag tag-diff">难度：${esc(d?.difficulty || "待定")}</span><span class="tag">证据等级 ${esc(d?.evidence_level || "—")}</span></div><div class="detail-actions"><button class="primary" data-fav="${encodeURIComponent(ex.英文名)}">${favorites.has(ex.英文名) ? '♥ 已收藏' : '♡ 收藏动作'}</button><a class="secondary" href="#library">继续浏览</a></div></div></div><section class="detail-section"><h2>动作拆解</h2><div class="step-list">${steps.map((s, i) => `<div class="step"><span class="step-num">0${i + 1}</span><span>${esc(s)}</span></div>`).join("")}</div></section><section class="detail-section"><h2>训练重点</h2><div class="detail-columns"><div class="info-panel"><h3>主要参与肌群</h3>${listItems(primary)}${secondary.length ? `<h3 class="subheading">辅助与稳定</h3>${listItems(secondary)}` : ""}</div><div class="info-panel"><h3>可执行提示</h3>${listItems(cues, "cue-list")}${d?.not_the_goal ? `<p class="not-goal"><strong>不要误解：</strong>${esc(d.not_the_goal)}</p>` : ""}</div></div></section><section class="detail-section"><h2>呼吸、错误与训练建议</h2><div class="detail-columns"><div class="info-panel"><h3>呼吸</h3><p>${esc(breathing)}</p><h3 class="subheading">常见错误</h3>${listItems(errors)}</div><div class="info-panel">${d?.params ? "" : `<h3>训练建议</h3><p>${esc(programming)}</p>`}<h3 class="${d?.params ? "" : "subheading"}">安全边界</h3><p>${esc(safety)}</p></div></div>${paramSection}${relSection}</section><section class="detail-section research-note"><h2>资料状态</h2><p><strong>${esc(status)}</strong></p>${sources.length ? `<details><summary>查看参考依据</summary>${listItems(sources)}</details>` : "<p>当前只有开源元数据，详细动作资料正在逐条复核。</p>"}<p class="attribution-line">素材署名：© Gym visual — https://gymvisual.com/</p></section>`;
   document.querySelector("#detail [data-fav]").onclick = () => { favorites.has(ex.英文名) ? favorites.delete(ex.英文名) : favorites.add(ex.英文名); saveFavorites(); detail(ex.英文名); showToast(favorites.has(ex.英文名) ? "已收藏" : "已取消收藏"); };
 }
+
+// ---- 难度与同类动作（A2） ----
+const DIFF_RANK = { "基础": 1, "中级": 2, "高级": 3 };
+function rankOf(name) { const t = enhanced.exercises?.[name]?.difficulty || "中级"; return DIFF_RANK[t] || 2; }
+function related(ex) {
+  const self = rankOf(ex.英文名);
+  const pool = exercises.filter(x => x.英文名 !== ex.英文名 && x.身体部位 !== "neck" && !/拉伸|stretch|dog/i.test(x.标准中文名 + " " + x.英文名));
+  const samePart = pool.filter(x => x.身体部位 === ex.身体部位);
+  const sameTarget = pool.filter(x => x.目标肌群 === ex.目标肌群);
+  const used = new Set([ex.英文名]);
+  const take = (arr, n) => { const out = []; for (const x of arr) { if (out.length >= n) break; if (used.has(x.英文名)) continue; used.add(x.英文名); out.push(x); } return out; };
+  const patKey = name => enhanced.exercises?.[name]?.family || (enhanced.exercises?.[name]?.movement_pattern || "").split(/[（(、+]/)[0].trim().slice(0, 3);
+  const selfPat = patKey(ex.英文名);
+  const down = take(samePart.filter(x => rankOf(x.英文名) < self).sort((a, b) => (patKey(b.英文名) === selfPat ? 1 : 0) - (patKey(a.英文名) === selfPat ? 1 : 0) || rankOf(b.英文名) - rankOf(a.英文名)), 3);
+  const up = take(samePart.filter(x => rankOf(x.英文名) > self).sort((a, b) => (patKey(b.英文名) === selfPat ? 1 : 0) - (patKey(a.英文名) === selfPat ? 1 : 0) || rankOf(a.英文名) - rankOf(b.英文名)), 3);
+  const alt = take(sameTarget.filter(x => x.器械 !== ex.器械).sort((a, b) => (patKey(b.英文名) === selfPat ? 1 : 0) - (patKey(a.英文名) === selfPat ? 1 : 0)), 3);
+  return { down, up, alt };
+}
+function relatedItem(ex) {
+  return `<a class="related-item" href="#exercise/${encodeURIComponent(ex.英文名)}"><img loading="lazy" data-path="${esc(ex.gif)}" src="${imageUrl(ex.gif)}" alt="${esc(ex.标准中文名)}" onerror="imgFallback(this)"><span><strong>${esc(ex.标准中文名)}</strong><em>${esc(label(EQUIPMENT, ex.器械))} · ${esc(enhanced.exercises?.[ex.英文名]?.difficulty || "难度待定")}</em></span></a>`;
+}
+function relatedBlock(title, list, hint) {
+  return `<div class="related-col"><h3>${title}</h3>${list.length ? list.map(relatedItem).join("") : `<p class="related-empty">${hint}</p>`}</div>`;
+}
+function paramBlock(params) {
+  if (!params) return '<p class="related-empty">该动作暂无处方数据，先用轻重量熟悉动作，或参考同类已复核动作。</p>';
+  const rows = Object.entries(params).map(([goal, v]) => `<div class="param-row"><span class="param-goal">${esc(goal)}</span><span>${esc(v.sets)} 组</span><span>× ${esc(v.reps)}</span><span>休息 ${esc(v.rest)}</span></div>`).join("");
+  return `<div class="param-table">${rows}</div><p class="param-note">组数 × 次数为起始建议，按恢复情况和动作质量调整；动作变形就结束该组。</p>`;
+}
+
+// ---- 今日一练 / 部位快捷入口（A4） ----
+const STEP_EXCLUDE = /拉伸|stretch|dog|颈部/i;
+function pickToday() {
+  const pool = exercises.filter(x => !STEP_EXCLUDE.test(x.标准中文名 + " " + x.英文名));
+  if (!pool.length) return null;
+  const now = new Date();
+  const seed = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
+  let h = 7;
+  for (let i = 0; i < seed.length; i += 1) h = (h * 31 + seed.charCodeAt(i)) % 1000003;
+  return pool[h % pool.length];
+}
+function renderToday() {
+  const el = document.querySelector("#today"); if (!el) return;
+  const ex = pickToday(); if (!ex) return;
+  const d = enhanced.exercises?.[ex.英文名];
+  const now = new Date();
+  el.hidden = false;
+  el.innerHTML = `<a class="today-card" href="#exercise/${encodeURIComponent(ex.英文名)}"><div class="today-media"><img data-path="${esc(ex.gif)}" src="${imageUrl(ex.gif)}" alt="${esc(ex.标准中文名)}" onerror="imgFallback(this)"></div><div class="today-copy"><p class="eyebrow">今日一练 · ${now.getMonth() + 1} 月 ${now.getDate()} 日</p><h2>${esc(ex.标准中文名)}</h2><p class="today-meta">${esc(label(PARTS, ex.身体部位))} · ${esc(label(EQUIPMENT, ex.器械))} · ${esc(d?.difficulty || "难度待定")}</p><p class="today-aim">${esc(d?.primary_goal || "")}</p><span class="today-cta">看动作拆解 →</span></div></a>`;
+}
+const QUICK_PARTS = ["chest", "back", "shoulders", "upper arms", "upper legs", "waist", "cardio", "neck"];
+function renderQuickParts() {
+  const el = document.querySelector("#quickParts"); if (!el) return;
+  const items = QUICK_PARTS.filter(p => exercises.some(e => e.身体部位 === p));
+  el.innerHTML = `<span class="quick-label">按部位练</span>` + items.map(p => `<button class="quick-chip" data-quick="${esc(p)}">${esc(label(PARTS, p))}<em>${exercises.filter(e => e.身体部位 === p).length}</em></button>`).join("");
+}
+
 function route() { document.querySelectorAll(".view").forEach(v => { v.hidden = true; v.classList.remove("active-view"); }); document.querySelectorAll(".top-nav a").forEach(a => a.classList.remove("active")); const hash = location.hash || "#library"; if (hash.startsWith("#exercise/")) { document.querySelector("#detail").hidden = false; detail(decodeURIComponent(hash.slice("#exercise/".length))); } else { const id = hash.slice(1).split("/")[0]; const view = document.querySelector(`#${id}`) || document.querySelector("#library"); view.hidden = false; view.classList.add("active-view"); document.querySelector(`.top-nav a[href='#${view.id}']`)?.classList.add("active"); if (id === "favorites") renderFavorites(); } }
-async function init() { try { const [csvRes, enhancementRes] = await Promise.all([fetch("精选100动作.csv?v=5", { cache: "no-store" }), fetch("动作增强数据.json?v=5", { cache: "no-store" })]); exercises = parseCSV(await csvRes.text()); enhanced = await enhancementRes.json(); document.querySelector("#totalCount").textContent = exercises.length; renderFilters(); renderLibrary(); saveFavorites(); } catch (e) { document.querySelector("#exerciseGrid").innerHTML = `<div class="empty-state"><h3>动作数据加载失败</h3><p>请通过本地开发服务器打开此页面。</p></div>`; } document.querySelector("#searchInput").oninput = e => { query = e.target.value.trim(); renderLibrary(); }; document.querySelector("#filterToggle").onclick = e => { const f = document.querySelector("#filters"); f.hidden = !f.hidden; e.currentTarget.setAttribute("aria-expanded", String(!f.hidden)); }; document.querySelector("#bodyweightOnly").onchange = renderLibrary; document.querySelector("#clearFilters").onclick = () => { query = ""; selectedPart = ""; selectedEquipment = ""; document.querySelector("#searchInput").value = ""; document.querySelector("#bodyweightOnly").checked = false; renderLibrary(); }; document.addEventListener("click", e => { if (e.target.matches("[data-part]")) { selectedPart = e.target.dataset.part; renderLibrary(); } if (e.target.matches("[data-equipment]")) { selectedEquipment = e.target.dataset.equipment; renderLibrary(); } }); document.querySelector("#aboutButton").onclick = () => location.hash = "#about"; window.addEventListener("hashchange", route); route(); }
+async function init() { try { const [csvRes, enhancementRes] = await Promise.all([fetch("精选100动作.csv?v=7", { cache: "no-store" }), fetch("动作增强数据.json?v=8", { cache: "no-store" })]); exercises = parseCSV(await csvRes.text()); enhanced = await enhancementRes.json(); document.querySelector("#totalCount").textContent = exercises.length; renderToday(); renderQuickParts(); renderFilters(); renderLibrary(); saveFavorites(); } catch (e) { document.querySelector("#exerciseGrid").innerHTML = `<div class="empty-state"><h3>动作数据加载失败</h3><p>请通过本地开发服务器打开此页面。</p></div>`; } document.querySelector("#searchInput").oninput = e => { query = e.target.value.trim(); renderLibrary(); }; document.querySelector("#filterToggle").onclick = e => { const f = document.querySelector("#filters"); f.hidden = !f.hidden; e.currentTarget.setAttribute("aria-expanded", String(!f.hidden)); }; document.querySelector("#bodyweightOnly").onchange = renderLibrary; document.querySelector("#clearFilters").onclick = () => { query = ""; selectedPart = ""; selectedEquipment = ""; document.querySelector("#searchInput").value = ""; document.querySelector("#bodyweightOnly").checked = false; renderLibrary(); }; document.addEventListener("click", e => { if (e.target.closest("[data-quick]")) { selectedPart = e.target.closest("[data-quick]").dataset.quick; const f = document.querySelector("#filters"); if (f.hidden) { f.hidden = false; document.querySelector("#filterToggle").setAttribute("aria-expanded", "true"); } renderLibrary(); document.querySelector("#exerciseGrid").scrollIntoView({ behavior: "smooth", block: "start" }); } if (e.target.matches("[data-part]")) { selectedPart = e.target.dataset.part; renderLibrary(); } if (e.target.matches("[data-equipment]")) { selectedEquipment = e.target.dataset.equipment; renderLibrary(); } }); document.querySelector("#aboutButton").onclick = () => location.hash = "#about"; window.addEventListener("hashchange", route); route(); }
 window.addEventListener("beforeinstallprompt", event => { event.preventDefault(); installPrompt = event; const button = document.querySelector("#installButton"); button.hidden = false; });
 document.querySelector("#installButton").onclick = async () => { if (!installPrompt) return; installPrompt.prompt(); await installPrompt.userChoice; installPrompt = null; document.querySelector("#installButton").hidden = true; };
 init();
