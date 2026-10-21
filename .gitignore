@@ -3,3 +3,5 @@
 .deploy/
 android/build/
 android/**/*.keystore
+头像/
+.tmp-avatar/
