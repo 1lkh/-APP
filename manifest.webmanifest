@@ -1,6 +1,6 @@
 {
-  "name": "动得对｜健身动作库",
-  "short_name": "动得对",
+  "name": "FORMA｜健身动作库",
+  "short_name": "FORMA",
   "description": "用动图和中文分步拆解，把每个动作练对。",
   "lang": "zh-CN",
   "start_url": "./index.html#library",
@@ -9,6 +9,23 @@
   "background_color": "#f5f7f2",
   "theme_color": "#17221d",
   "icons": [
-    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
   ]
 }

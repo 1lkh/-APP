@@ -135,3 +135,8 @@
 .cal-legend .cal-dot{position:static}
 @media(max-width:850px){.promo-row{grid-template-columns:1fr}}
 .app-version{margin:34px 0 0;font-size:12px;color:var(--muted);letter-spacing:.02em}
+.brand-mark{object-fit:cover;border-radius:9px;background:#0b120e}
+.brand-name{letter-spacing:.06em}
+.brand{margin-right:26px}
+.brand:after{content:"";display:block;width:1px;height:20px;background:var(--line);margin-left:22px}
+@media(max-width:560px){.brand{margin-right:10px}.brand:after{margin-left:10px;height:16px}}

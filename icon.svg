@@ -1,9 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
-  <rect width="192" height="192" rx="44" fill="#101915"/>
-  <path d="M43 96h106" stroke="#f4f7ef" stroke-width="16" stroke-linecap="round"/>
-  <rect x="48" y="67" width="13" height="58" rx="6.5" fill="#d9ff57"/>
-  <rect x="131" y="67" width="13" height="58" rx="6.5" fill="#d9ff57"/>
-  <rect x="27" y="54" width="17" height="84" rx="8.5" fill="#ff684d"/>
-  <rect x="148" y="54" width="17" height="84" rx="8.5" fill="#ff684d"/>
-  <path d="M68 77v38M124 77v38" stroke="#d9ff57" stroke-width="8" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" role="img" aria-label="FORMA">
+  <defs>
+    <linearGradient id="forma-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#101815"/>
+      <stop offset="1" stop-color="#050807"/>
+    </linearGradient>
+  </defs>
+  <rect width="192" height="192" rx="24" fill="url(#forma-bg)"/>
+  <path d="M96 33l55 32v62l-55 32-55-32V65z" fill="#0B120E" stroke="#D9FF57" stroke-width="8" stroke-linejoin="miter"/>
+  <path d="M70 60h54v17H88v13h27v17H88v24H70z" fill="#D9FF57"/>
 </svg>

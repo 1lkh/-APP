@@ -4,16 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#f5f7f2" />
-    <meta name="description" content="动得对：移动端优先的健身动作库，用动图和中文拆解帮助你把动作练对。" />
+    <meta name="description" content="FORMA：移动端优先的健身动作库，用动图和中文拆解帮助你把每个动作练对。" />
     <link rel="manifest" href="manifest.webmanifest" />
-    <link rel="apple-touch-icon" href="icon.svg" />
-    <title>动得对｜健身动作库</title>
-    <link rel="stylesheet" href="styles.css?v=11" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <title>FORMA｜健身动作库</title>
+    <link rel="stylesheet" href="styles.css?v=12" />
   </head>
   <body>
     <header class="topbar">
       <a class="brand" href="#library" aria-label="返回动作库">
-        <span class="brand-mark">动</span><span>动得对</span>
+        <img class="brand-mark" src="icon.svg" alt="" width="31" height="31" /><span class="brand-name">FORMA</span>
       </a>
       <nav class="top-nav" aria-label="主导航">
         <a class="active" href="#library">动作库</a>
@@ -21,7 +21,7 @@
         <a href="#favorites">我的收藏 <span id="favoriteCount" class="nav-count">0</span></a>
         <a href="#about">关于</a>
       </nav>
-      <button class="install-button" id="installButton" hidden aria-label="安装动得对" title="安装到设备">↓ 安装</button>
+      <button class="install-button" id="installButton" hidden aria-label="安装 FORMA" title="安装到设备">↓ 安装</button>
       <button class="icon-button" id="aboutButton" aria-label="打开关于页面" title="关于">ⓘ</button>
     </header>
 
@@ -70,16 +70,16 @@
         <div id="favoriteEmpty" class="empty-state"><span>♡</span><h3>还没有收藏动作</h3><p>在动作卡片或详情页点一下心形，就能收藏。</p><a href="#library">去逛逛动作库</a></div>
       </section>
       <section id="about" class="view" hidden>
-        <div class="page-heading"><p class="eyebrow">关于动得对</p><h1>专注动作本身。</h1><p>这是一个轻量、去商业化的健身动作工具，帮助你看懂动作，再开始训练。</p></div>
+        <div class="page-heading"><p class="eyebrow">关于 FORMA</p><h1>专注动作本身。</h1><p>FORMA 取自动作里的「形态」——健身圈说的 form，指的就是动作做得对不对。这是一个轻量、去商业化的健身动作工具，帮助你看懂动作，再开始训练。</p></div>
         <div class="about-grid"><article><span class="about-icon">↗</span><h3>数据来源</h3><p>动作元数据来自 hasaneyldrm/exercises-dataset。增强内容分两层：已人工复核的动作用 A/B 级证据标注并注明复核结论；其余动作为规则生成层，按动作族与器械差异生成，证据等级 B/C，明确标注「待复核」，不能替代教练现场指导。</p></article><article><span class="about-icon">◎</span><h3>使用说明</h3><p>提供精选动作浏览、搜索、筛选、详情拆解、组次参数速查、退阶/进阶/替代动作和本地收藏。详情页会区分主要训练目标、参与肌群、资料状态与难度等级。</p></article><article><span class="about-icon">!</span><h3>健康提示</h3><p>动作内容仅供一般信息参考。训练前请根据自身情况咨询专业医生或教练；出现疼痛、麻木或眩晕请停止。</p></article></div>
-        <p class="app-version" id="appVersion">版本 v13 · 2026-10-21</p><div class="copyright"><strong>素材版权</strong><p>GIF/图片素材归 Gym visual 所有，仅按 180×180 原始尺寸展示。</p><p class="attribution">© Gym visual — https://gymvisual.com/</p><p>代码与动作元数据遵循 MIT License。商业发布前请单独核实素材授权。</p></div>
+        <p class="app-version" id="appVersion">版本 v14 · 2026-10-21</p><div class="copyright"><strong>素材版权</strong><p>GIF/图片素材归 Gym visual 所有，仅按 180×180 原始尺寸展示。</p><p class="attribution">© Gym visual — https://gymvisual.com/</p><p>代码与动作元数据遵循 MIT License。商业发布前请单独核实素材授权。</p></div>
       </section>
     </main>
 
     <div id="toast" class="toast" role="status"></div>
-    <script src="app.js?v=12"></script>
+    <script src="app.js?v=13"></script>
     <script>
-      if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js?v=13", { updateViaCache: "none" }).then(reg => reg.update()).catch(() => {});
+      if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js?v=14", { updateViaCache: "none" }).then(reg => reg.update()).catch(() => {});
     </script>
   </body>
 </html>
