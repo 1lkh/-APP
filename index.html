@@ -8,7 +8,7 @@
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="apple-touch-icon" href="icon.svg" />
     <title>动得对｜健身动作库</title>
-    <link rel="stylesheet" href="styles.css?v=10" />
+    <link rel="stylesheet" href="styles.css?v=11" />
   </head>
   <body>
     <header class="topbar">
@@ -72,14 +72,14 @@
       <section id="about" class="view" hidden>
         <div class="page-heading"><p class="eyebrow">关于动得对</p><h1>专注动作本身。</h1><p>这是一个轻量、去商业化的健身动作工具，帮助你看懂动作，再开始训练。</p></div>
         <div class="about-grid"><article><span class="about-icon">↗</span><h3>数据来源</h3><p>动作元数据来自 hasaneyldrm/exercises-dataset。增强内容分两层：已人工复核的动作用 A/B 级证据标注并注明复核结论；其余动作为规则生成层，按动作族与器械差异生成，证据等级 B/C，明确标注「待复核」，不能替代教练现场指导。</p></article><article><span class="about-icon">◎</span><h3>使用说明</h3><p>提供精选动作浏览、搜索、筛选、详情拆解、组次参数速查、退阶/进阶/替代动作和本地收藏。详情页会区分主要训练目标、参与肌群、资料状态与难度等级。</p></article><article><span class="about-icon">!</span><h3>健康提示</h3><p>动作内容仅供一般信息参考。训练前请根据自身情况咨询专业医生或教练；出现疼痛、麻木或眩晕请停止。</p></article></div>
-        <div class="copyright"><strong>素材版权</strong><p>GIF/图片素材归 Gym visual 所有，仅按 180×180 原始尺寸展示。</p><p class="attribution">© Gym visual — https://gymvisual.com/</p><p>代码与动作元数据遵循 MIT License。商业发布前请单独核实素材授权。</p></div>
+        <p class="app-version" id="appVersion">版本 v13 · 2026-10-21</p><div class="copyright"><strong>素材版权</strong><p>GIF/图片素材归 Gym visual 所有，仅按 180×180 原始尺寸展示。</p><p class="attribution">© Gym visual — https://gymvisual.com/</p><p>代码与动作元数据遵循 MIT License。商业发布前请单独核实素材授权。</p></div>
       </section>
     </main>
 
     <div id="toast" class="toast" role="status"></div>
-    <script src="app.js?v=11"></script>
+    <script src="app.js?v=12"></script>
     <script>
-      if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js?v=12", { updateViaCache: "none" }).then(reg => reg.update()).catch(() => {});
+      if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js?v=13", { updateViaCache: "none" }).then(reg => reg.update()).catch(() => {});
     </script>
   </body>
 </html>
