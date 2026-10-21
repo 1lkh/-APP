@@ -8,7 +8,7 @@
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="apple-touch-icon" href="icon.svg" />
     <title>动得对｜健身动作库</title>
-    <link rel="stylesheet" href="styles.css?v=8" />
+    <link rel="stylesheet" href="styles.css?v=9" />
   </head>
   <body>
     <header class="topbar">
@@ -17,6 +17,7 @@
       </a>
       <nav class="top-nav" aria-label="主导航">
         <a class="active" href="#library">动作库</a>
+        <a href="#plans">训练</a>
         <a href="#favorites">我的收藏 <span id="favoriteCount" class="nav-count">0</span></a>
         <a href="#about">关于</a>
       </nav>
@@ -53,6 +54,13 @@
       </section>
 
       <section id="detail" class="view" hidden></section>
+      <section id="plans" class="view" hidden>
+        <div class="page-heading" id="plansHead"><p class="eyebrow">训练计划</p><h1>今天练什么</h1><p>选一套计划直接跟练，组间休息自动计时，练完自动记一笔。</p></div>
+        <div id="planList" class="plan-grid"></div>
+        <div id="planDetail" hidden></div>
+        <div id="recordPanel" class="record-panel"></div>
+      </section>
+      <section id="workout" class="view workout-view" hidden></section>
       <section id="favorites" class="view" hidden>
         <div class="page-heading"><p class="eyebrow">收藏夹</p><h1>我的动作</h1><p>把常练的动作放在这里，随时回来查看。</p></div>
         <div id="favoriteGrid" class="exercise-grid"></div>
@@ -66,9 +74,9 @@
     </main>
 
     <div id="toast" class="toast" role="status"></div>
-    <script src="app.js?v=9"></script>
+    <script src="app.js?v=10"></script>
     <script>
-      if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js?v=9", { updateViaCache: "none" }).then(reg => reg.update()).catch(() => {});
+      if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js?v=11", { updateViaCache: "none" }).then(reg => reg.update()).catch(() => {});
     </script>
   </body>
 </html>

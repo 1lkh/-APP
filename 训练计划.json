@@ -1,0 +1,118 @@
+{
+ "version": "1.0",
+ "note": "预置训练计划。items[].en 对应 精选100动作.csv 的英文名；有 reps 的按次数做，有 duration 的按秒计时。rest 单位为秒。",
+ "plans": [
+  {
+   "id": "full-body-bw",
+   "name": "全身自重 · 入门",
+   "level": "基础",
+   "minutes": 20,
+   "focus": "全身",
+   "goal": "建立推、拉、髋、核心四个基本模式，不依赖器械",
+   "note": "第一次练就从这个开始。每个动作之间休息 60 秒，做不动就减少次数，不要缩短行程。",
+   "items": [
+    { "en": "push-up", "sets": 3, "reps": "6–12", "rest": 60 },
+    { "en": "inverted row", "sets": 3, "reps": "8–12", "rest": 60 },
+    { "en": "low glute bridge on floor", "sets": 3, "reps": "12–15", "rest": 45 },
+    { "en": "dead bug", "sets": 3, "reps": "每侧 8–10", "rest": 45 },
+    { "en": "jack jump (male)", "sets": 3, "duration": 40, "rest": 40 }
+   ]
+  },
+  {
+   "id": "chest",
+   "name": "胸日 · 水平推",
+   "level": "中级",
+   "minutes": 40,
+   "focus": "胸部",
+   "goal": "上胸 + 中胸 + 内侧，兼顾力量与围度",
+   "note": "先做杠铃，再做哑铃和自重。最后两组如果有人保护可以冲一下重量。",
+   "items": [
+    { "en": "barbell incline bench press", "sets": 4, "reps": "6–8", "rest": 120 },
+    { "en": "dumbbell bench press", "sets": 3, "reps": "8–12", "rest": 90 },
+    { "en": "dumbbell fly", "sets": 3, "reps": "10–15", "rest": 60 },
+    { "en": "chest dip", "sets": 3, "reps": "6–10", "rest": 90 },
+    { "en": "push-up", "sets": 2, "reps": "力竭前留 2 次", "rest": 60 }
+   ]
+  },
+  {
+   "id": "back",
+   "name": "背日 · 垂直拉与水平拉",
+   "level": "中级",
+   "minutes": 40,
+   "focus": "背部",
+   "goal": "背阔肌宽度 + 中背厚度 + 斜方肌上束",
+   "note": "每个动作都先沉肩再拉，重量让背部发力而不是手臂。",
+   "items": [
+    { "en": "cable lat pulldown full range of motion", "sets": 4, "reps": "8–12", "rest": 90 },
+    { "en": "barbell bent over row", "sets": 4, "reps": "6–10", "rest": 120 },
+    { "en": "cable seated row", "sets": 3, "reps": "10–12", "rest": 90 },
+    { "en": "hyperextension", "sets": 3, "reps": "10–15", "rest": 60 },
+    { "en": "barbell shrug", "sets": 3, "reps": "12–15", "rest": 60 }
+   ]
+  },
+  {
+   "id": "legs",
+   "name": "腿日 · 髋与膝",
+   "level": "中级",
+   "minutes": 45,
+   "focus": "下肢",
+   "goal": "深蹲力量 + 髋伸 + 单侧稳定 + 小腿",
+   "note": "深蹲和硬拉之间多休息一会儿；膝盖和腰有任何不适立刻停。",
+   "items": [
+    { "en": "barbell full squat", "sets": 4, "reps": "5–8", "rest": 150 },
+    { "en": "barbell romanian deadlift", "sets": 3, "reps": "8–10", "rest": 120 },
+    { "en": "dumbbell lunge", "sets": 3, "reps": "每侧 8–10", "rest": 90 },
+    { "en": "lever lying leg curl", "sets": 3, "reps": "10–15", "rest": 60 },
+    { "en": "standing calf raise (on a staircase)", "sets": 4, "reps": "12–20", "rest": 45 }
+   ]
+  },
+  {
+   "id": "core",
+   "name": "核心 · 抗伸展与屈曲",
+   "level": "基础",
+   "minutes": 15,
+   "focus": "核心",
+   "goal": "抗伸展、抗旋转、下腹控制",
+   "note": "核心训练看的是控制不是次数。腰一拱起来就停，宁可少做。",
+   "items": [
+    { "en": "front plank with twist", "sets": 3, "duration": 40, "rest": 45 },
+    { "en": "dead bug", "sets": 3, "reps": "每侧 10", "rest": 45 },
+    { "en": "reverse crunch", "sets": 3, "reps": "12–15", "rest": 45 },
+    { "en": "lying leg raise flat bench", "sets": 3, "reps": "10–12", "rest": 45 },
+    { "en": "crunch floor", "sets": 2, "reps": "15–20", "rest": 45 }
+   ]
+  },
+  {
+   "id": "hiit",
+   "name": "有氧间歇 · 12 分钟",
+   "level": "中级",
+   "minutes": 12,
+   "focus": "心肺",
+   "goal": "短时间拉高心率，提升无氧耐力",
+   "note": "30 秒做、30 秒歇，四五轮。动作开始变形就减速，别硬撑。",
+   "items": [
+    { "en": "jack jump (male)", "sets": 3, "duration": 30, "rest": 30 },
+    { "en": "burpee", "sets": 3, "duration": 30, "rest": 30 },
+    { "en": "mountain climber", "sets": 3, "duration": 30, "rest": 30 },
+    { "en": "jump squat", "sets": 3, "duration": 30, "rest": 30 },
+    { "en": "bear crawl", "sets": 3, "duration": 30, "rest": 30 }
+   ]
+  },
+  {
+   "id": "shoulders-arms",
+   "name": "肩与手臂",
+   "level": "基础",
+   "minutes": 35,
+   "focus": "肩部 · 上臂",
+   "goal": "三角肌三束 + 肱二头 + 肱三头",
+   "note": "轻重量、多次数、慢下放。肩部有弹响但不痛可以继续，痛就停。",
+   "items": [
+    { "en": "dumbbell standing overhead press", "sets": 4, "reps": "8–10", "rest": 90 },
+    { "en": "dumbbell lateral raise", "sets": 3, "reps": "12–15", "rest": 60 },
+    { "en": "dumbbell reverse fly", "sets": 3, "reps": "12–15", "rest": 60 },
+    { "en": "dumbbell hammer curl", "sets": 3, "reps": "10–12", "rest": 60 },
+    { "en": "cable triceps pushdown (v-bar)", "sets": 3, "reps": "10–15", "rest": 60 }
+   ]
+  }
+ ]
+}
