@@ -50,13 +50,13 @@ if [[ ! -f "$KEYSTORE" ]]; then
     -dname "CN=Android Debug,O=Android,C=US" >/dev/null 2>&1
 fi
 
-"$BUILD_TOOLS/zipalign" -f 4 "$OUT/app-unsigned.apk" "$OUT/动得对-unsigned-aligned.apk"
+"$BUILD_TOOLS/zipalign" -f 4 "$OUT/app-unsigned.apk" "$OUT/FORMA-unsigned-aligned.apk"
 "$BUILD_TOOLS/apksigner" sign \
   --ks "$KEYSTORE" \
   --ks-pass pass:android \
   --ks-key-alias androiddebugkey \
   --key-pass pass:android \
-  --out "$OUT/动得对-debug.apk" \
-  "$OUT/动得对-unsigned-aligned.apk"
-"$BUILD_TOOLS/apksigner" verify --verbose "$OUT/动得对-debug.apk"
-echo "Built: $OUT/动得对-debug.apk"
+  --out "$OUT/FORMA-debug.apk" \
+  "$OUT/FORMA-unsigned-aligned.apk"
+"$BUILD_TOOLS/apksigner" verify --verbose "$OUT/FORMA-debug.apk"
+echo "Built: $OUT/FORMA-debug.apk"
